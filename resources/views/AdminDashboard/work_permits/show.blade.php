@@ -89,7 +89,7 @@
 
     <!-- Content Section -->
     <div class="row">
-        <p style="font-size:40px; font-weight:500; margin-left:420px; margin-top:-20px; margin-bottom:-10px;">
+        <p style="font-size:40px; font-weight:500; margin-left:420px; margin-top:-20px; margin-bottom:10px;">
         {{ strtoupper($workPermit->work_permit_type) }}</p>
         <div class="col-sm-6">
         <table class="custom-table">
@@ -170,12 +170,9 @@
                     <th style="font-size: 13px;">İkamet Süresi <br><span class="small-text">Duration of Stay </span></th>
                     <td>{{ $workPermit->residence_duration }}</td>
                 </tr>
-                <tr>
-                    <th style="font-size: 13px;"><br><span class="small-text"></span></th>
-                    <td></td>
-                </tr>
+               
             </table>
-            <p style="font-size:13px" class="mt-4">Çalışma iznim geçerlidir ve destekleyici belge olarak kabul edilmelidir.</p>
+            <p style="font-size:14px" class="mt-4">Çalışma iznim geçerlidir ve destekleyici belge olarak kabul edilmelidir.</p>
                 <ol style="font-size:13px; text-align:justify"> 
                     <li style="margin-bottom:13px">Geçerli bir çalışma iznim bulunmaktadır. (Schengen ülkeleri, ABD, Birleşik Krallık veya İrlanda'dan alınmış geçerli vize veya oturma izni yerine geçer.) E-vizeler destekleyici belge olarak kabul edilmemektedir.</li>
                     <li style="margin-bottom:13px">Türkiye'ye giriş yaptığında, ülkede kalacağım her gün için en az 50 ABD Doları veya eşdeğer döviz miktarına sahip olduğumu kanıtlayabilirim.</li>
