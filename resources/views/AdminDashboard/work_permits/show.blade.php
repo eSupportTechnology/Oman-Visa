@@ -43,9 +43,9 @@
     }
 
     .table-bordered th, .table-bordered td {
-        border: 1px solid #ddd;
+        border: 5px solid black;
         padding: -10px; /* Reduce padding */
-        font-size: 10px; /* Adjust font size */
+        font-size: 13px; /* Adjust font size */
         height: 5px; /* Set row height */
         line-height: 1; /* Reduce spacing inside the cells */
     }
@@ -83,7 +83,7 @@
 
         <div class="col-sm-4 text-right mt-4">
             <img src="{{ asset('barcode.png') }}" alt="Barcode" class="img-fluid" style="width:300px; height:80px">
-            <p class="barcode">TV-{{ $workPermit->reference_no }}</p>
+            <p class="barcode" style="font-size: 8px;">TV-{{ $workPermit->reference_no }}</p>
         </div>
     </div>
 
@@ -94,59 +94,59 @@
         <div class="col-sm-6">
         <table class="custom-table">
             <tr>
-                <th>Referans No <br><span class="small-text">(Reference No)</span></th>
+                <th style="font-size: 14px;">Referans No <br><span class="small-text">(Reference No)</span></th>
                 <td>{{ $workPermit->reference_no }}</td>
             </tr>
             <tr>
-                <th>Adı <br><span class="small-text">(Name)</span></th>
+                <th style="font-size: 14px;">Adı <br><span class="small-text">(Name)</span></th>
                 <td>{{ $workPermit->first_name }}</td>
             </tr>
             <tr>
-                <th>Soyadı <br><span class="small-text">(Surname)</span></th>
+                <th style="font-size: 14px;">Soyadı <br><span class="small-text">(Surname)</span></th>
                 <td>{{ $workPermit->last_name }}</td>
             </tr>
             <tr>
-                <th>Doğum Yeri <br><span class="small-text">(Place of Birth)</span></th>
+                <th style="font-size: 14px;">Doğum Yeri <br><span class="small-text">(Place of Birth)</span></th>
                 <td>{{ $workPermit->place_of_birth }}</td>
             </tr>
             <tr>
-                <th>Doğum Tarihi <br><span class="small-text">(Date of Birth)</span></th>
+                <th style="font-size: 14px;">Doğum Tarihi <br><span class="small-text">(Date of Birth)</span></th>
                 <td>{{ $workPermit->date_of_birth }}</td>
             </tr>
             <tr>
-                <th>Uyruk Adı <br><span class="small-text">(Nationality)</span></th>
+                <th style="font-size: 14px;">Uyruk Adı <br><span class="small-text">(Nationality)</span></th>
                 <td>{{ $workPermit->nationality }}</td>
             </tr>
             <tr>
-                <th>Seyahat Belgesi <br><span class="small-text">(Passport)</span></th>
+                <th style="font-size: 14px;">Seyahat Belgesi <br><span class="small-text">(Passport)</span></th>
                 <td>{{ $workPermit->passport_number }}</td>
             </tr>
             <tr>
-                <th>Çalışma İzni <br><span class="small-text">(Work Permit)</span></th>
+                <th style="font-size: 14px;">Çalışma İzni <br><span class="small-text">(Work Permit)</span></th>
                 <td>{{ $workPermit->work_permit_type }}</td>
             </tr>
             <tr>
-                <th>Belge No <br><span class="small-text">(Document Number)</span></th>
+                <th style="font-size: 14px;">Belge No <br><span class="small-text">(Document Number)</span></th>
                 <td>{{ $workPermit->reference_no }}</td>
             </tr>
             <tr>
-                <th>Belge Veriliş T. <br><span class="small-text">(Date of Issue)</span></th>
+                <th style="font-size: 14px;">Belge Veriliş T. <br><span class="small-text">(Date of Issue)</span></th>
                 <td>{{ $workPermit->passport_issue_date }}</td>
             </tr>
             <tr>
-                <th>Belge Geçerlilik T <br><span class="small-text">(Expiry Date)</span></th>
+                <th style="font-size: 14px;">Belge Geçerlilik T <br><span class="small-text">(Expiry Date)</span></th>
                 <td>{{ $workPermit->passport_expiry_date }}</td>
             </tr>
             <tr>
-                <th>Çalışma İzni <br><span class="small-text">(Work Permit)</span></th>
+                <th style="font-size: 14px;">Çalışma İzni <br><span class="small-text">(Work Permit)</span></th>
                 <td>{{ $workPermit->reference_no }}</td>
             </tr>
             <tr>
-                <th>Ek Vize Geç. T. <br><span class="small-text">(Additional V. Expiry Date)</span></th>
+                <th style="font-size: 14px;">Ek Vize Geç. T. <br><span class="small-text">(Additional V. Expiry Date)</span></th>
                 <td>{{ $workPermit->work_permit_validity_end }}</td>
             </tr>
             <tr>
-                <th>Ek Vize No <br><span class="small-text">(Additional Visa Number)</span></th>
+                <th style="font-size: 14px;">Ek Vize No <br><span class="small-text">(Additional Visa Number)</span></th>
                 <td>{{ $workPermit->additional_visa_info }}</td>
             </tr>
         </table>
@@ -155,19 +155,19 @@
         <div class="col-sm-6">
             <table class="custom-table">
                  <tr>
-                    <th style="font-size: 13px;">Giriş Sayısı <br><span class="small-text">Number of Entries </span></th>
+                    <th style="font-size: 15px;">Giriş Sayısı <br><span class="small-text">Number of Entries </span></th>
                     <td>{{ $workPermit->number_of_entries }}</td>
                 </tr>
                 <tr>
-                    <th style="font-size: 13px;">Geçerlilik Tarihi <br><span class="small-text">Validity Date </span></th>
+                    <th style="font-size: 14px;">Geçerlilik Tarihi <br><span class="small-text">Validity Date </span></th>
                     <td>{{ $workPermit->validity_date }}</td>
                 </tr>
                 <tr>
-                    <th style="font-size: 13px;">Geçerlilik Bitişi <br><span class="small-text">Expiry Date</span></th>
+                    <th style="font-size: 14px;">Geçerlilik Bitişi <br><span class="small-text">Expiry Date</span></th>
                     <td>{{ $workPermit->expiry_date }}</td>
                 </tr>
                 <tr>
-                    <th style="font-size: 13px;">İkamet Süresi <br><span class="small-text">Duration of Stay </span></th>
+                    <th style="font-size: 14px;">İkamet Süresi <br><span class="small-text">Duration of Stay </span></th>
                     <td>{{ $workPermit->residence_duration }}</td>
                 </tr>
                
@@ -181,7 +181,7 @@
                 </ol>
            
         </div>
-            <div class="text-right" style="margin-bottom:0px; text-align:right">
+            <div class="text-right" style="margin-bottom:0px; text-align:right; margin-top:-5px;">
                 <img src="{{ asset('barcode.png') }}" alt="Barcode" class="img-fluid" style="width:300px; height:80px">
             </div>
     </div>
