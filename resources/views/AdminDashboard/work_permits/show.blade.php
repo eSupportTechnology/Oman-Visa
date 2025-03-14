@@ -15,8 +15,31 @@
         margin-top: 20px;
     }
 
-    .table-bordered {
-        border: 1px solid #ddd;
+   
+    .custom-table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid #ccc; 
+    }
+
+    .custom-table th, 
+    .custom-table td {
+        border-bottom: 1px solid #ccc; 
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    .custom-table th {
+        text-align: left;
+    }
+
+    .custom-table td {
+        text-align: right; 
+    }
+
+    .custom-table tr:last-child td, 
+    .custom-table tr:last-child th {
+        border-bottom: none;
     }
 
     .table-bordered th, .table-bordered td {
@@ -69,67 +92,68 @@
         <p style="font-size:40px; font-weight:500; margin-left:420px; margin-top:-20px; margin-bottom:-10px;">
         {{ strtoupper($workPermit->work_permit_type) }}</p>
         <div class="col-sm-6">
-            <table class="table table-bordered" style="height:50%;">
-                <tr style="height:-10%;">
-                    <th style="font-size: 13px;">Referans No <br><span class="small-text">(Reference No)</span></th>
-                    <td>{{ $workPermit->reference_no }}</td>
-                </tr>
-                <tr>
-                    <th style="font-size: 13px;">Adı <br><span class="small-text">(Name)</span></th>
-                    <td>{{ $workPermit->first_name }}</td>
-                </tr>
-                <tr>
-                    <th style="font-size: 13px;">Soyadı <br><span class="small-text">(Surname)</span></th>
-                    <td>{{ $workPermit->last_name }}</td>
-                </tr>
-                <tr>
-                    <th style="font-size: 13px;">Doğum Yeri <br><span class="small-text">(Place of Birth)</span></th>
-                    <td>{{ $workPermit->place_of_birth }}</td>
-                </tr>
-                <tr>
-                    <th style="font-size: 13px;">Doğum Tarihi <br><span class="small-text">(Date of Birth)</span></th>
-                    <td>{{ $workPermit->date_of_birth }}</td>
-                </tr>
-                <tr>
-                    <th style="font-size: 13px;">Uyruk Adı <br><span class="small-text">(Nationality)</span></th>
-                    <td>{{ $workPermit->nationality }}</td>
-                </tr>
-                <tr>
-                    <th style="font-size: 13px;">Seyahat Belgesi <br><span class="small-text">(Passport)</span></th>
-                    <td>{{ $workPermit->passport_number }}</td>
-                </tr>
-                <tr>
-                    <th style="font-size: 13px;">Çalışma İzni <br><span class="small-text">(Work Permit)</span></th>
-                    <td>{{ $workPermit->work_permit_type }}</td>
-                </tr>
-                <tr>
-                    <th style="font-size: 13px;">Belge No <br><span class="small-text">(Document Number)</span></th>
-                    <td>{{ $workPermit->reference_no }}</td>
-                </tr>
-                <tr>
-                    <th style="font-size: 13px;">Belge Veriliş T. <br><span class="small-text">(Date of Issue)</span></th>
-                    <td>{{ $workPermit->passport_issue_date }}</td>
-                </tr>
-                <tr>
-                    <th style="font-size: 13px;">Belge Geçerlilik T <br><span class="small-text">(Expiry Date)</span></th>
-                    <td>{{ $workPermit->passport_expiry_date }}</td>
-                </tr>
-                <tr>
-                    <th style="font-size: 13px;">Çalışma İzni <br><span class="small-text">(Work Permit)</span></th>
-                    <td>{{ $workPermit->reference_no }}</td>
-                </tr>
-                <tr>
-                    <th  style="font-size: 13px;">Ek Vize Geç. T. <br><span class="small-text">(Additional V. Expiry Date)</span></th>
-                    <td>{{ $workPermit->work_permit_validity_end }}</td>
-                </tr>
-                <tr>
-                    <th style="font-size: 13px;">Ek Vize No <br><span class="small-text">(Additional Visa Number)</span></th>
-                    <td>{{ $workPermit->additional_visa_info }}</td>
-                </tr>
-            </table>
+        <table class="custom-table">
+            <tr>
+                <th>Referans No <br><span class="small-text">(Reference No)</span></th>
+                <td>{{ $workPermit->reference_no }}</td>
+            </tr>
+            <tr>
+                <th>Adı <br><span class="small-text">(Name)</span></th>
+                <td>{{ $workPermit->first_name }}</td>
+            </tr>
+            <tr>
+                <th>Soyadı <br><span class="small-text">(Surname)</span></th>
+                <td>{{ $workPermit->last_name }}</td>
+            </tr>
+            <tr>
+                <th>Doğum Yeri <br><span class="small-text">(Place of Birth)</span></th>
+                <td>{{ $workPermit->place_of_birth }}</td>
+            </tr>
+            <tr>
+                <th>Doğum Tarihi <br><span class="small-text">(Date of Birth)</span></th>
+                <td>{{ $workPermit->date_of_birth }}</td>
+            </tr>
+            <tr>
+                <th>Uyruk Adı <br><span class="small-text">(Nationality)</span></th>
+                <td>{{ $workPermit->nationality }}</td>
+            </tr>
+            <tr>
+                <th>Seyahat Belgesi <br><span class="small-text">(Passport)</span></th>
+                <td>{{ $workPermit->passport_number }}</td>
+            </tr>
+            <tr>
+                <th>Çalışma İzni <br><span class="small-text">(Work Permit)</span></th>
+                <td>{{ $workPermit->work_permit_type }}</td>
+            </tr>
+            <tr>
+                <th>Belge No <br><span class="small-text">(Document Number)</span></th>
+                <td>{{ $workPermit->reference_no }}</td>
+            </tr>
+            <tr>
+                <th>Belge Veriliş T. <br><span class="small-text">(Date of Issue)</span></th>
+                <td>{{ $workPermit->passport_issue_date }}</td>
+            </tr>
+            <tr>
+                <th>Belge Geçerlilik T <br><span class="small-text">(Expiry Date)</span></th>
+                <td>{{ $workPermit->passport_expiry_date }}</td>
+            </tr>
+            <tr>
+                <th>Çalışma İzni <br><span class="small-text">(Work Permit)</span></th>
+                <td>{{ $workPermit->reference_no }}</td>
+            </tr>
+            <tr>
+                <th>Ek Vize Geç. T. <br><span class="small-text">(Additional V. Expiry Date)</span></th>
+                <td>{{ $workPermit->work_permit_validity_end }}</td>
+            </tr>
+            <tr>
+                <th>Ek Vize No <br><span class="small-text">(Additional Visa Number)</span></th>
+                <td>{{ $workPermit->additional_visa_info }}</td>
+            </tr>
+        </table>
+
         </div>
         <div class="col-sm-6">
-            <table class="table table-bordered">
+            <table class="custom-table">
                  <tr>
                     <th style="font-size: 13px;">Giriş Sayısı <br><span class="small-text">Number of Entries </span></th>
                     <td>{{ $workPermit->number_of_entries }}</td>
@@ -146,19 +170,27 @@
                     <th style="font-size: 13px;">İkamet Süresi <br><span class="small-text">Duration of Stay </span></th>
                     <td>{{ $workPermit->residence_duration }}</td>
                 </tr>
+                <tr>
+                    <th style="font-size: 13px;"><br><span class="small-text"></span></th>
+                    <td></td>
+                </tr>
             </table>
-            <p style="font-size:12px" class="mt-4">Çalışma iznim geçerlidir ve destekleyici belge olarak kabul edilmelidir.</p>
-            <ol style="font-size:12px"> 
-                <li>Geçerli bir çalışma iznim bulunmaktadır. (Schengen ülkeleri, ABD, Birleşik Krallık veya İrlanda'dan alınmış geçerli vize veya oturma izni yerine geçer.) E-vizeler destekleyici belge olarak kabul edilmemektedir.</li>
-                <li>Türkiye'ye giriş yaptığında, ülkede kalacağım her gün için en az 50 ABD Doları veya eşdeğer döviz miktarına sahip olduğumu kanıtlayabilirim.</li>
-                <li>Seyahat amacım çalışmak ve iş faaliyetlerinde bulunmaktır.</li>
-                <li>Sahip olduğum pasaport, bana verilecek e-Vize veya çalışma izni süresinden en az 3 ay daha uzun süre geçerlidir.</li>
-            </ol>
+            <p style="font-size:13px" class="mt-4">Çalışma iznim geçerlidir ve destekleyici belge olarak kabul edilmelidir.</p>
+                <ol style="font-size:13px; text-align:justify"> 
+                    <li style="margin-bottom:13px">Geçerli bir çalışma iznim bulunmaktadır. (Schengen ülkeleri, ABD, Birleşik Krallık veya İrlanda'dan alınmış geçerli vize veya oturma izni yerine geçer.) E-vizeler destekleyici belge olarak kabul edilmemektedir.</li>
+                    <li style="margin-bottom:13px">Türkiye'ye giriş yaptığında, ülkede kalacağım her gün için en az 50 ABD Doları veya eşdeğer döviz miktarına sahip olduğumu kanıtlayabilirim.</li>
+                    <li style="margin-bottom:13px">Seyahat amacım çalışmak ve iş faaliyetlerinde bulunmaktır.</li>
+                    <li >Sahip olduğum pasaport, bana verilecek e-Vize veya çalışma izni süresinden en az 3 ay daha uzun süre geçerlidir.</li>
+                </ol>
+           
         </div>
+            <div class="text-right" style="margin-bottom:0px; text-align:right">
+                <img src="{{ asset('barcode.png') }}" alt="Barcode" class="img-fluid" style="width:300px; height:80px">
+            </div>
     </div>
 
     <!-- Disclaimer Section -->
-    <div class="row mt-4">
+    <div class="row">
         <div class="col-sm-12">
             <p style="font-size:11px"><strong>FERAGATNAME (DISCLAIMER)</strong></p>
             <p style="font-size:11px">Lütfen unutmayın ki işlenmiş bir çalışma izni vizesinin bilgileri değiştirilemez ve vize ücreti iade edilmez. Çalışma izni vizenizdeki bilgiler, geçerli seyahat belgenizle tamamen uyumlu olmalıdır; aksi takdirde vizeniz geçersiz sayılacaktır. Böyle bir durumda, yeni bir başvuru yapmanız gerekecektir. Pasaportunuzun refakatçi bölümünde kayıtlı kişiler sızınle seyahat ediyorsa ve Türkiye'de çalışmak istiyorlarsa, onların da ayrı bir çalışma izni vizesi alması zorunludur. Çalışma izni vizesi yalnızca iş amaçlı verilmektedir. Turistik, ticari veya diğer amaçlar için farklı bir vize gerekmektedir ve bunun için Türkiye'nin yurt dışı diplomatik misyonlarıyla iletişime geçilmelidir. Çalışma izninizin ve oturma izninizin (ikamet izni) süresinin dolup dolmadığını kontrol etmek ve zamanında yenilemek sizin sorumluluğunuzdadır.</p>
