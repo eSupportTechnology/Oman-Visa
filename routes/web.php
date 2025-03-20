@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WorkPermitController;
+use App\Http\Controllers\TemplateController;
 
 Route::get('/', function () {
     return view('AdminDashboard.home');
@@ -33,5 +34,21 @@ Route::prefix('work-permits')->group(function () {
     Route::get('/{id}/template', [WorkPermitController::class, 'template'])->name('work_permits.template'); // Generate work permit template
 });
 
+
+// Template Routes
+Route::prefix('template')->group(function () {
+    Route::get('/template01', [TemplateController::class, 'template01'])->name('template01.index');
+    Route::post('/template01/generate', [TemplateController::class, 'generate01'])->name('template01.generate');
+
+    Route::get('/template02', [TemplateController::class, 'template02'])->name('template02.index');
+    Route::post('/template02/generate', [TemplateController::class, 'generate02'])->name('template02.generate');
+
+    Route::get('/template03', [TemplateController::class, 'template03'])->name('template03.index');
+    Route::post('/template03/generate', [TemplateController::class, 'generate03'])->name('template03.generate');
+});
+
+Route::get('/show', function () {
+    return view('AdminDashboard.templates.show1');
+});
 
 require __DIR__.'/auth.php';

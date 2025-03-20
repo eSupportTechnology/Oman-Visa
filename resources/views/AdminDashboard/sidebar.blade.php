@@ -68,6 +68,23 @@
                         </ul>
                     </li>
 
+                    <!-- Template Section -->
+                    <li class="sidebar-main-title">
+                        <div><h6>Templates</h6></div>
+                    </li>
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title">
+                        <i class="fa fa-file-text"></i>
+                            <span>Templates</span>
+                        </a>
+                        <ul class="sidebar-submenu">
+                            <li><a href="{{ route('template01.index') }}">AVUKAT MUSTAFA KESKIN</a></li>
+                            <!--<li><a href="{{ route('template02.index') }}">Work Permit Details</a></li>-->
+                            <li><a href="{{ route('template03.index') }}">Template03</a></li>
+                        </ul>
+                    </li>
+
+
                 </ul>
             </div>
             <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
