@@ -1,4 +1,4 @@
-<!-- AdminDashboard/pdf/template02_pdf.blade.php -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

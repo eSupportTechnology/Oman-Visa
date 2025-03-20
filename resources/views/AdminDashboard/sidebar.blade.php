@@ -81,6 +81,7 @@
                             <li><a href="{{ route('template01.index') }}">AVUKAT MUSTAFA KESKIN</a></li>
                             <!--<li><a href="{{ route('template02.index') }}">Work Permit Details</a></li>-->
                             <li><a href="{{ route('template03.index') }}">Template03</a></li>
+                            <li><a href="{{ route('template04.index') }}">Job Offer Letter Entry</a></li>
                         </ul>
                     </li>
 

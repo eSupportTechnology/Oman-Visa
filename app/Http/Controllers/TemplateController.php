@@ -125,5 +125,34 @@ class TemplateController extends Controller
         return $pdf->download('official_document.pdf');
     }
     
+
+    public function template04()
+    {
+        return view('AdminDashboard.templates.template04');
+    }
+
+
+    public function generate04(Request $request)
+    {
+
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'id_number' => 'required|string|max:255',
+            'position' => 'required|string|max:255',
+            'salary' => 'required|numeric|min:0',
+            'working_hours' => 'required|string|max:255',
+            'work_location' => 'required|string|max:255',
+            'date' => 'required|date',
+        ]);
+
+        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template04_pdf', compact('data'))
+        ->setOption('enable-javascript', true) 
+        ->setOption('javascript-delay', 2000)
+        ->setOption('no-stop-slow-scripts', true)
+        ->setOption('background', true); 
     
+
+        return $pdf->download('is_teklifi_mektubu.pdf');
+    }
+
 }

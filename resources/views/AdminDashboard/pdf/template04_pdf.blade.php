@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <title>İş Teklifi Mektubu</title>
     <style>
+        
         body {
             font-family: Arial, sans-serif;
-            margin: 20mm;
-            background-color: #fefaf5;
+            margin: 5px;
+            padding: 0px;
         }
         .header {
             text-align: left;
@@ -30,7 +31,7 @@
 <body>
     <!-- Header -->
     <div class="header">
-        <img src="{{ public_path('logo2.png') }}" alt="Ünlü Group Logo" style="width: 100px; display: block;">
+        <img src="{{ public_path('logo2.png') }}" alt="Ünlü Group Logo" style="width: 300px; display: block;">
         <div style="text-align: right;">
             <div style="display: inline-block; text-align: left;">
                 <p>
@@ -48,20 +49,20 @@
     </div>
 
     <!-- Recipient Information -->
-    <h3 style="margin-bottom:35px">İş Teklifi Mektubu</h3>
+    <h3 style="margin-bottom:35px ;margin-top:0">İş Teklifi Mektubu</h3>
     <p style="line-height:0.5; margin-bottom:0"><strong>Sayın:</strong></p>
     <p>{{ $data['name'] }}<br>{{ $data['id_number'] }}</p>
 
     <!-- Subject -->
     <p><strong>Konu: İş Teklifi:</strong></p>
 
-    <p style="text-transform: capitalize;"><strong>SAYIN: gdr</strong></p>
+    <p style="text-transform: capitalize;"><strong>SAYIN: {{ strtoupper($data['name']) }}</strong></p>
 
     <!-- Introduction -->
     <p>Sizi Ünlü Group bünyesinde {{ $data['position'] }} pozisyonunda çalışmaya davet etmekten mutluluk duyarız. İş teklifimiz aşağıdaki şart ve koşulları içermektedir:</p>
 
     <!-- Terms and Conditions -->
-    <ol>
+    <ol style="margin-left:10px;padding-left:10px">
         <li style="margin-bottom:10px">Pozisyon: {{ $data['position'] }}</li>
         <li style="margin-bottom:10px">Aylık Maaş: {{ number_format($data['salary'], 2) }} gregrTürk Lirası</li>
         <li style="margin-bottom:10px">Çalışma Saatleri: Pazartesi - Cuma, {{ $data['working_hours'] }}</li>
@@ -73,7 +74,7 @@
     <p>Aylık maaş zamanında ödenecektir.</p>
     <p>Çalışma sırasında sağlanan ekipman ve makinelerin korunması çalışanın sorumluluğundadır.</p>
     <p>Şirket, haftalık izin ve Türkiye resmi tatilleri kapsamında dinlenme günleri sayılacaktır.</p>
-    <p  style="margin-bottom:50px">Diğer tüm koşullar Türkiye İş Kanunu'na göre belirlenecektir.</p>
+    <p  style="margin-bottom:30px">Diğer tüm koşullar Türkiye İş Kanunu'na göre belirlenecektir.</p>
 
     <!-- Closing Paragraph -->
     <p>Sizi ekibimizde görmekten heyecan duyuyoruz ve yeteneklerinizin ve emeğinizin şirketimizin başarısına önemli katkı sağlayacağına inanıyoruz.</p>

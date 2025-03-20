@@ -23,7 +23,7 @@
             </div>
             <div class="card mt-4">
                 <div class="card-header">
-                    <h5>Input Form for Official Document</h5>
+                    <h5>Input Form for </h5>
                 </div>
                 <form action="{{ route('template03.generate') }}" method="POST">
                     @csrf

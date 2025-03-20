@@ -45,6 +45,9 @@ Route::prefix('template')->group(function () {
 
     Route::get('/template03', [TemplateController::class, 'template03'])->name('template03.index');
     Route::post('/template03/generate', [TemplateController::class, 'generate03'])->name('template03.generate');
+
+    Route::get('/template04', [TemplateController::class, 'template04'])->name('template04.index');
+    Route::post('/template04/generate', [TemplateController::class, 'generate04'])->name('template04.generate');
 });
 
 Route::get('/show', function () {
