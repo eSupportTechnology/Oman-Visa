@@ -24,7 +24,7 @@
 
             <div class="card mt-4">
                 <div class="card-header">
-                    <h5>Add Details for AVUKAT MUSTAFA KESKIN</h5>
+                    <h5>Add Details for</h5>
                 </div>
 
                 <form action="{{ route('template01.generate') }}" method="POST" enctype="multipart/form-data">

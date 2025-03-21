@@ -155,4 +155,132 @@ class TemplateController extends Controller
         return $pdf->download('is_teklifi_mektubu.pdf');
     }
 
+
+
+    public function template05()
+    {
+        return view('AdminDashboard.templates.template05');
+    }
+
+
+    public function generate05(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'passport_number' => 'required|string|max:255',
+            'salary' => 'required|numeric|min:0',
+            'date' => 'required|date',
+        ]);
+
+        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template05_pdf', compact('data'))
+            ->setOption('enable-javascript', true)
+            ->setOption('javascript-delay', 2000)
+            ->setOption('no-stop-slow-scripts', true)
+            ->setOption('margin-top', 20);
+
+        return $pdf->download('caddie_is_teklifi_mektubu.pdf');
+    }
+
+
+
+    public function template06()
+    {
+        return view('AdminDashboard.templates.template06');
+    }
+
+
+    public function generate06(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'passport_number' => 'required|string|max:255',
+            'position' => 'required|string|max:255',
+            'salary' => 'required|numeric|min:0',
+            'working_hours' => 'required|string|max:255',
+            'work_location' => 'required|string|max:255',
+            'date' => 'required|date',
+        ]);
+
+        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template06_pdf', compact('data'))
+            ->setOption('enable-javascript', true) 
+            ->setOption('javascript-delay', 2000) 
+            ->setOption('no-stop-slow-scripts', true) 
+            ->setOption('margin-top', 10);
+
+        return $pdf->download('is_teklifi_mektubu.pdf');
+    }
+
+
+
+    public function template07()
+    {
+        return view('AdminDashboard.templates.template07');
+    }
+
+    public function generate07(Request $request)
+    {
+        $data = $request->validate([
+            'passport_number' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'nationality' => 'required|string|max:255',
+            'date_of_birth' => 'required|date',
+            'place_of_birth' => 'required|string|max:255',
+            'issuance_location' => 'required|string|max:255',
+            'issue_date' => 'required|date',
+            'expiry_date' => 'required|date',
+            'mrz' => 'required|string|max:255',
+            'father_name' => 'required|string|max:255',
+            'mother_name' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'old_passport_number' => 'nullable|string|max:255',
+        ]);
+
+        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template07_pdf', compact('data'))
+            ->setOption('enable-javascript', true)
+            ->setOption('javascript-delay', 2000) 
+            ->setOption('no-stop-slow-scripts', true) 
+            ->setOption('margin-top', 10);
+
+        return $pdf->download('passport_information.pdf');
+    }
+
+
+
+
+    public function template08()
+    {
+        return view('AdminDashboard.templates.template08');
+    }
+
+    public function generate08(Request $request)
+    {
+
+        $data = $request->validate([
+            'passport_number' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'nationality' => 'required|string|max:255',
+            'gender' => 'required|string|max:255',
+            'date_of_birth' => 'required|date',
+            'place_of_birth' => 'required|string|max:255',
+            'issuance_location' => 'required|string|max:255',
+            'issue_date' => 'required|date',
+            'expiry_date' => 'required|date',
+            'mrz' => 'required|string|max:255',
+            'father_name' => 'required|string|max:255',
+            'mother_name' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'old_passport_number' => 'nullable|string|max:255',
+            'old_issue_date' => 'nullable|date',
+            'old_issuance_location' => 'nullable|string|max:255',
+        ]);
+
+        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template08_pdf', compact('data'))
+            ->setOption('enable-javascript', true)
+            ->setOption('javascript-delay', 2000) 
+            ->setOption('no-stop-slow-scripts', true) 
+            ->setOption('margin-top', 10);
+
+        return $pdf->download('passport_verification_document.pdf');
+    }
+
 }
