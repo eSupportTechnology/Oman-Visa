@@ -70,6 +70,28 @@
                         </ul>
                     </li>
 
+                    <!-- Template Section -->
+                    <li class="sidebar-main-title">
+                        <div><h6>Templates</h6></div>
+                    </li>
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title">
+                        <i class="fa fa-file-text"></i>
+                            <span>Templates</span>
+                        </a>
+                        <ul class="sidebar-submenu">
+                            <li><a href="{{ route('template01.index') }}">Template01</a></li>
+                            <!--<li><a href="{{ route('template02.index') }}">Work Permit Details</a></li>-->
+                            <li><a href="{{ route('template03.index') }}">Template03</a></li>
+                            <li><a href="{{ route('template04.index') }}">Job Offer Letter Entry</a></li>
+                            <li><a href="{{ route('template05.index') }}">Caddie Job Offer Letter Entry</a></li>
+                            <li><a href="{{ route('template06.index') }}">Template06</a></li>
+                            <li><a href="{{ route('template07.index') }}">Passport Information Form</a></li>
+                            <li><a href="{{ route('template08.index') }}">Passport Verification Form</a></li>
+                        </ul>
+                    </li>
+
+
                 </ul>
             </div>
             <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>

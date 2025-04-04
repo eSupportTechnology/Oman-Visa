@@ -3,12 +3,22 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WorkPermitController;
+
 use App\Http\Controllers\CustomerController;
+
+use App\Http\Controllers\TemplateController;
+
 
 Route::get('/', function () {
     return view('AdminDashboard.home');
 });
 
+Route::get('/home', function () {
+    return view('home');
+});
+Route::get('/userlogin', function () {
+    return view('userlogin');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -44,5 +54,36 @@ Route::prefix('work-permits')->group(function () {
     Route::get('/{id}/template', [WorkPermitController::class, 'template'])->name('work_permits.template'); // Generate work permit template
 });
 
+
+// Template Routes
+Route::prefix('template')->group(function () {
+    Route::get('/template01', [TemplateController::class, 'template01'])->name('template01.index');
+    Route::post('/template01/generate', [TemplateController::class, 'generate01'])->name('template01.generate');
+
+    Route::get('/template02', [TemplateController::class, 'template02'])->name('template02.index');
+    Route::post('/template02/generate', [TemplateController::class, 'generate02'])->name('template02.generate');
+
+    Route::get('/template03', [TemplateController::class, 'template03'])->name('template03.index');
+    Route::post('/template03/generate', [TemplateController::class, 'generate03'])->name('template03.generate');
+
+    Route::get('/template04', [TemplateController::class, 'template04'])->name('template04.index');
+    Route::post('/template04/generate', [TemplateController::class, 'generate04'])->name('template04.generate');
+
+    Route::get('/template05', [TemplateController::class, 'template05'])->name('template05.index');
+    Route::post('/template05/generate', [TemplateController::class, 'generate05'])->name('template05.generate');
+
+    Route::get('/template06', [TemplateController::class, 'template06'])->name('template06.index');
+    Route::post('/template06/generate', [TemplateController::class, 'generate06'])->name('template06.generate');
+
+    Route::get('/template07', [TemplateController::class, 'template07'])->name('template07.index');
+    Route::post('/template07/generate', [TemplateController::class, 'generate07'])->name('template07.generate');
+
+    Route::get('/template08', [TemplateController::class, 'template08'])->name('template08.index');
+    Route::post('/template08/generate', [TemplateController::class, 'generate08'])->name('template08.generate');
+});
+
+Route::get('/show', function () {
+    return view('AdminDashboard.templates.show1');
+});
 
 require __DIR__.'/auth.php';
