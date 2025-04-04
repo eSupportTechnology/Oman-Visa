@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WorkPermitController;
+use App\Http\Controllers\CustomerController;
 
 Route::get('/', function () {
     return view('AdminDashboard.home');
@@ -19,6 +20,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::prefix('customers')->group(function () {
+
+    Route::get('/', [CustomerController::class, 'index'])->name('customers.index'); // List all work permits
+    Route::get('/create', [CustomerController::class, 'create'])->name('customers.create'); // Show create form
+    Route::post('/', [CustomerController::class, 'store'])->name('customers.store'); // Store new work permit
+    Route::get('/{id}', [CustomerController::class, 'show'])->name('customers.show'); // Show single work permit
+    Route::get('/{id}/edit', [CustomerController::class, 'edit'])->name('customers.edit'); // Show edit form
+    Route::put('/{id}', [CustomerController::class, 'update'])->name('customers.update'); // Update work permit
+    Route::delete('/{id}', [CustomerController::class, 'destroy'])->name('customers.destroy'); // Delete work permit
+});
 
 
 // Work Permit Routes

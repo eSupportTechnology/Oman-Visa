@@ -40,16 +40,18 @@
 
                     <!-- User Management Section -->
                     <li class="sidebar-main-title">
-                        <div><h6>User Management</h6></div>
+                        <div><h6>Customer Management</h6></div>
                     </li>
+
+
                     <li class="sidebar-list">
                         <a class="sidebar-link sidebar-title">
                             <i class="fa fa-users"></i>
-                            <span>Manage Users</span>
+                            <span>Customer Management</span>
                         </a>
                         <ul class="sidebar-submenu">
-                            <li><a href="#">All Members</a></li>
-                            <li><a href="#">Add Members</a></li>
+                            <li><a href="{{ route('customers.index') }}">All Customers</a></li>
+                            <li><a href="{{ route('customers.create') }}">Add Customer</a></li>
                         </ul>
                     </li>
 
