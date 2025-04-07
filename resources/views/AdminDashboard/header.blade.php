@@ -13,7 +13,7 @@
         </div>
       </form>
       <div class="header-logo-wrapper col-auto p-0">
-        <div class="logo-wrapper"><a href="index.html"><img class="img-fluid" src="{{ asset('frontend/assets/images/logo/logo.png') }}" alt=""></a></div>
+        <div class="logo-wrapper"><a href="index.html"><img class="img-fluid" src="{{ asset('logo.png') }}" alt=""></a></div>
         <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i></div>
       </div>
 
@@ -48,7 +48,7 @@
               <li><a href="#"><i data-feather="file-text"></i><span>Taskboard</span></a></li>
               <li><a href="#"><i data-feather="settings"></i><span>Settings</span></a></li>
               <li>
-                <form method="POST" style="display: inline;">
+                <form method="POST" style="display: inline;" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" style="background: none; border: none; color: inherit; padding: 0; cursor: pointer;">
                         <i data-feather="log-in"></i>

@@ -219,7 +219,7 @@ class TemplateController extends Controller
 
     public function generate07(Request $request)
     {
-        $data = $request->validate([
+        $validatedData = $request->validate([
             'passport_number' => 'required|string|max:255',
             'name' => 'required|string|max:255',
             'nationality' => 'required|string|max:255',
@@ -235,6 +235,7 @@ class TemplateController extends Controller
             'old_passport_number' => 'nullable|string|max:255',
         ]);
 
+        try{
         $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template07_pdf', compact('data'))
             ->setOption('enable-javascript', true)
             ->setOption('javascript-delay', 2000) 
@@ -242,9 +243,75 @@ class TemplateController extends Controller
             ->setOption('margin-top', 10);
 
         return $pdf->download('passport_information.pdf');
+        }catch (\Exception $e) {
+            return response()->json([
+                'error' => 'PDF generation failed. ' . $e->getMessage()
+            ], 500);
+        }
     }
 
+    public function template07_1()
+    {
+        return view('AdminDashboard.templates.template07_1');
+    }
 
+    public function generate07_1(Request $request)
+    {
+        $validatedData = $request->validate([
+            'enrollment_number' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'dob' => 'required|date',
+            'gender' => 'required|string|max:10',
+            'address' => 'required|string|max:255',
+            'mobile_no' => 'required|string|max:20',
+            'aadhaar_no' => 'required|string|max:20',
+        ]);
+    
+        try {
+            $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template07_1_pdf', compact('validatedData'))
+                ->setOption('enable-javascript', true)
+                ->setOption('javascript-delay', 1000) 
+                ->setOption('no-stop-slow-scripts', true) 
+                ->setOption('margin-top', 10);
+    
+            return $pdf->download('enrollment_form.pdf');
+    
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'PDF generation failed: ' . $e->getMessage()]);
+        }
+    }
+
+    public function template07_2()
+    {
+        return view('AdminDashboard.templates.template07_2');
+    }
+
+    public function generate07_2(Request $request)
+{
+    $validatedData = $request->validate([
+        'pvr_no' => 'required|string|max:255',
+        'address' => 'required|string|max:255',
+        'legal_notice' => 'required|string|max:255',
+        'publication_date' => 'required|date',
+        'approval' => 'required|string|max:255',
+        'Issuance' => 'required|string|max:255',
+    ]);
+
+    try {
+        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template07_2_pdf', compact('validatedData'))
+            ->setOption('enable-javascript', true)
+            ->setOption('javascript-delay', 2000)
+            ->setOption('no-stop-slow-scripts', true)
+            ->setOption('margin-top', 10);
+
+        return $pdf->download('police_report.pdf');
+    } catch (\Exception $e) {
+        return response()->json([
+            'error' => 'PDF generation failed. ' . $e->getMessage()
+        ], 500);
+    }
+}
 
 
     public function template08()
@@ -254,8 +321,7 @@ class TemplateController extends Controller
 
     public function generate08(Request $request)
     {
-
-        $data = $request->validate([
+        $validatedData = $request->validate([
             'passport_number' => 'required|string|max:255',
             'name' => 'required|string|max:255',
             'nationality' => 'required|string|max:255',
@@ -273,14 +339,129 @@ class TemplateController extends Controller
             'old_issue_date' => 'nullable|date',
             'old_issuance_location' => 'nullable|string|max:255',
         ]);
-
-        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template08_pdf', compact('data'))
-            ->setOption('enable-javascript', true)
-            ->setOption('javascript-delay', 2000) 
-            ->setOption('no-stop-slow-scripts', true) 
-            ->setOption('margin-top', 10);
-
-        return $pdf->download('passport_verification_document.pdf');
+      
+        try {
+            $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template08_pdf', compact('validatedData'))
+                ->setOption('enable-javascript', true)
+                ->setOption('javascript-delay', 1000) 
+                ->setOption('no-stop-slow-scripts', true)
+                ->setOption('margin-top', 10);
+    
+            return $pdf->download('passport_verification_document.pdf');
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'PDF generation failed. ' . $e->getMessage()
+            ], 500);
+        }
     }
+
+    public function template08_1()
+    {
+        return view('AdminDashboard.templates.template08_1');
+    }
+
+    public function generate08_1(Request $request)
+    {
+        $validatedData = $request->validate([
+            'recode_no' => 'required|string|max:255',
+            'enrolment_no' => 'required|string|max:255',
+            'reciver' => 'required|string|max:255',
+            'father_name' => 'required|string|max:255',
+            'ev_no' => 'required|string|max:255',
+            'region' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'district' => 'required|string|max:255',
+            'state' => 'required|string|max:255',
+            'zip_code' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:255',
+            'aadhar_no' => 'required|string|max:255',
+            'vid_no' => 'required|string|max:255',
+            'dob' => 'required|date',
+            'gender' => 'required|string|max:255',
+            'aadhaar_message' => 'required|string|max:500',
+        ]);
+        
+        try {
+            $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template08_1_pdf', compact('validatedData'))
+                ->setOption('enable-javascript', true)
+                ->setOption('javascript-delay', 1000)
+                ->setOption('no-stop-slow-scripts', true)
+                ->setOption('margin-top', 10);
+    
+            return $pdf->download('passport_verification_document.pdf');
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'PDF generation failed. ' . $e->getMessage()
+            ], 500);
+        }
+    }
+    
+
+    public function template08_2()
+    {
+        return view('AdminDashboard.templates.template08_2');
+    }
+
+    public function generate08_2(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'father_name' => 'required|string|max:255',
+            'passport_no' => 'required|string|max:255',
+            'issued_date' => 'required|date',
+            'age' => 'required|integer|min:1',
+            'address' => 'required|string|max:500',
+            'district' => 'required|string|max:255',
+            'start_date' => 'required|date',
+            'date'=>'required|date',
+            'c_no'=> 'required|string|max:255',
+            'end_date' => 'required|date|after_or_equal:start_date',
+        ]);
+        
+        try {
+            $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template08_2_pdf', compact('validatedData'))
+                ->setOption('enable-javascript', true)
+                ->setOption('javascript-delay', 1000)
+                ->setOption('no-stop-slow-scripts', true)
+                ->setOption('margin-top', 10);
+            
+            return $pdf->download('passport_verification_document.pdf');
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'PDF generation failed. ' . $e->getMessage()
+            ], 500);
+        }
+    }
+    
+    public function template09()
+    {
+        return view('AdminDashboard.templates.template09');
+    }
+
+    public function generate09(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'passport_no' => 'required|string|max:255',
+            'hours' => 'required|integer',
+            'salary' => 'required|numeric',
+            'days' => 'required|integer',
+            'date' => 'required|date',
+        ]);
+        
+        try {
+            $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template09_pdf', compact('validatedData'))
+                ->setOption('enable-javascript', true)
+                ->setOption('javascript-delay', 1000)
+                ->setOption('no-stop-slow-scripts', true)
+                ->setOption('margin-top', 10);
+
+            return $pdf->download('passport_verification_document.pdf');
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'PDF generation failed. ' . $e->getMessage()
+            ], 500);
+        }
+    }    
 
 }
