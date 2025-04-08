@@ -3,16 +3,16 @@
     <div>
         <!-- Logo Section -->
         <div class="logo-wrapper">
-            <a href="{{ route('dashboard') }}">
-                <img class="img-fluid for-light" src="{{ asset('frontend/assets/images/logo/logo.png') }}" alt="Logo">
-                <img class="img-fluid for-dark" src="{{ asset('frontend/assets/images/logo/logo_dark.png') }}" alt="Logo Dark">
+            <a href="{{ route('dashboard.home') }}" >
+                <img class="img-fluid for-light" src="{{ asset('logo.png') }}" alt="Logo"style="padding-left:55px; height:75px;">
+                <img class="img-fluid for-dark" src="{{ asset('logo.png') }}" alt="Logo Dark"style="padding-left:55px; height:75px;">
             </a>
             <div class="back-btn"><i class="fa fa-angle-left"></i></div>
             <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid"></i></div>
         </div>
 
         <div class="logo-icon-wrapper">
-            <a href="{{ route('dashboard') }}">
+            <a href="{{ route('dashboard.home') }}">
                 <img class="img-fluid" src="{{ asset('frontend/assets/images/logo/logo-icon.png') }}" alt="Logo Icon">
             </a>
         </div>
@@ -22,7 +22,7 @@
             <div id="sidebar-menu">
                 <ul class="sidebar-links" id="simple-bar">
                     <li class="back-btn">
-                        <a href="{{ route('dashboard') }}">
+                        <a href="{{ route('dashboard.home') }}">
                             <img class="img-fluid" src="{{ asset('assets/images/logo/logo-icon.png') }}" alt="Logo">
                         </a>
                         <div class="mobile-back text-end">
@@ -32,7 +32,7 @@
 
                     <!-- Dashboard -->
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title {{ request()->routeIs('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
+                        <a class="sidebar-link sidebar-title {{ request()->routeIs('dashboard.home') ? 'active' : '' }}" href="{{ route('dashboard.home') }}">
                             <i class="fa fa-home"></i>
                             <span>Dashboard</span>
                         </a>
@@ -79,13 +79,19 @@
                         </a>
                         <ul class="sidebar-submenu">
                             <li><a href="{{ route('template01.index') }}">Template01</a></li>
-                            <!--<li><a href="{{ route('template02.index') }}">Work Permit Details</a></li>-->
+                            <li><a href="{{ route('template02.index') }}">Work Permit Details</a></li>
                             <li><a href="{{ route('template03.index') }}">Template03</a></li>
                             <li><a href="{{ route('template04.index') }}">Job Offer Letter Entry</a></li>
                             <li><a href="{{ route('template05.index') }}">Caddie Job Offer Letter Entry</a></li>
                             <li><a href="{{ route('template06.index') }}">Template06</a></li>
-                            <li><a href="{{ route('template07.index') }}">Passport Information Form</a></li>
-                            <li><a href="{{ route('template08.index') }}">Passport Verification Form</a></li>
+                            <li><a href="{{ route('template07.index') }}">Passport </a></li>
+                            <li><a href="{{ route('template07_1.index') }}">Enrollment </a></li>
+                            <li><a href="{{ route('template07_2.index') }}">Police report </a></li>
+                            <li><a href="{{ route('template08.index') }}">Passport verification </a></li>
+                            <li><a href="{{ route('template08_1.index') }}">Registration </a></li>
+                            <li><a href="{{ route('template08_2.index') }}">Police Clearance  </a></li>
+                            <li><a href="{{ route('template09.index') }}">job offer  </a></li>
+
                         </ul>
                     </li>
 
