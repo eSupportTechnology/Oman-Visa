@@ -278,7 +278,7 @@ class TemplateController extends Controller
         }
 
         try{
-        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template07_pdf', compact('data','signaturePath'))
+        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template07_pdf', compact('validatedData','signaturePath'))
             ->setOption('enable-javascript', true)
             ->setOption('javascript-delay', 2000) 
             ->setOption('no-stop-slow-scripts', true) 

@@ -46,15 +46,15 @@
 
     <!-- Section 2: Passport Details -->
     <div style="line-height: 1.5; margin-top: 15px;">
-        <p style="font-size: 14px; margin: 0;">Pasaport Numarası / Passport No: {{ $data['passport_number'] }}</p>
-        <p style="font-size: 14px; margin: 0;">Ad Soyad / Name: {{ $data['name'] }}</p>
-        <p style="font-size: 14px; margin: 0;">Milliyet / Nationality: {{ $data['nationality'] }}</p>
-        <p style="font-size: 14px; margin: 0;">Doğum Tarihi / Date of Birth: {{ $data['date_of_birth'] }}</p>
+        <p style="font-size: 14px; margin: 0;">Pasaport Numarası / Passport No: {{ $validatedData['passport_number'] }}</p>
+        <p style="font-size: 14px; margin: 0;">Ad Soyad / Name: {{ $validatedData['name'] }}</p>
+        <p style="font-size: 14px; margin: 0;">Milliyet / Nationality: {{ $validatedData['nationality'] }}</p>
+        <p style="font-size: 14px; margin: 0;">Doğum Tarihi / Date of Birth: {{ $validatedData['date_of_birth'] }}</p>
         <p style="font-size: 14px; margin: 0;">Cinsiyet / Gender: Erkek / Male</p>
-        <p style="font-size: 14px; margin: 0;">Doğum Yeri / Place of Birth: {{ $data['place_of_birth'] }}</p>
-        <p style="font-size: 14px; margin: 0;">Veriliş Yeri / Issued at: {{ $data['issuance_location'] }}</p>
-        <p style="font-size: 14px; margin: 0;">Veriliş Tarihi / Date of Issue: {{ $data['issue_date'] }}</p>
-        <p style="font-size: 14px; margin: 0;">Son Kullanma Tarihi / Date of Expiry: {{ $data['expiry_date'] }}</p>
+        <p style="font-size: 14px; margin: 0;">Doğum Yeri / Place of Birth: {{ $validatedData['place_of_birth'] }}</p>
+        <p style="font-size: 14px; margin: 0;">Veriliş Yeri / Issued at: {{ $validatedData['issuance_location'] }}</p>
+        <p style="font-size: 14px; margin: 0;">Veriliş Tarihi / Date of Issue: {{ $validatedData['issue_date'] }}</p>
+        <p style="font-size: 14px; margin: 0;">Son Kullanma Tarihi / Date of Expiry: {{ $validatedData['expiry_date'] }}</p>
     </div>
 
     <div style="clear: both;"></div>
@@ -62,24 +62,24 @@
     <!-- Section 4: MRZ -->
     <div style="line-height: 1.5; margin-top: 15px;">
         <p style="font-size: 14px; margin: 0;">Makine Okunabilir Alan (MRZ):</p>
-        <p style="font-size: 14px; margin: 0;">{{ $data['mrz'] }}</p>
+        <p style="font-size: 14px; margin: 0;">{{ $validatedData['mrz'] }}</p>
     </div>
 
     <!-- Section 5: Parental Information -->
     <div style="line-height: 1.5; margin-top: 15px;">
-        <p style="font-size: 14px; margin: 0;">Baba Adı / Father's Name: {{ $data['father_name'] }}</p>
-        <p style="font-size: 14px; margin: 0;">Anne Adı / Mother's Name: {{ $data['mother_name'] }}</p>
+        <p style="font-size: 14px; margin: 0;">Baba Adı / Father's Name: {{ $validatedData['father_name'] }}</p>
+        <p style="font-size: 14px; margin: 0;">Anne Adı / Mother's Name: {{ $validatedData['mother_name'] }}</p>
     </div>
 
     <!-- Section 6: Address -->
     <div style="line-height: 1.5; margin-top: 15px;">
         <p style="font-size: 14px; margin: 0;">Adres / Address:</p>
-        <p style="font-size: 14px; margin: 0;">{{ $data['address'] }}</p>
+        <p style="font-size: 14px; margin: 0;">{{ $validatedData['address'] }}</p>
     </div>
 
     <!-- Section 7: Old Passport Number -->
     <div style="line-height: 1.5; margin-top: 15px;">
-        <p style="font-size: 14px; margin: 0;">Eski Pasaport Numarası / Old Passport No: {{ $data['old_passport_number'] }}</p>
+        <p style="font-size: 14px; margin: 0;">Eski Pasaport Numarası / Old Passport No: {{ $validatedData['old_passport_number'] }}</p>
     </div>
     <div class="signature" style="margin-top:45px">
         @if ($signaturePath && file_exists(public_path('storage/' . $signaturePath)))
