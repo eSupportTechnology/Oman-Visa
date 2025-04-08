@@ -28,7 +28,7 @@
             </div>
             <div class="card-body">
 
-            <form action="{{ route('template08.generate') }}" method="POST">
+            <form action="{{ route('template08.generate') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <!-- Left Column -->
@@ -117,6 +117,12 @@
                         <div class="mb-3">
                             <label for="old_issuance_location" class="form-label">Old Passport Issuance Location:</label>
                             <input type="text" name="old_issuance_location" id="old_issuance_location" class="form-control">
+                        </div>
+                        <div class="mb-3 row">
+                            <label class="col-sm-4 col-form-label">Signature:</label>
+                            <div class="col-sm-8">
+                                <input type="file" name="signature" class="form-control" accept="image/*" required>
+                            </div>
                         </div>
 
                         <div class="d-grid">

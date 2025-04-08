@@ -27,7 +27,7 @@
                 <h2>Passport Information Form</h2>
             </div>
         <div class="card-body">
-            <form action="{{ route('template07.generate') }}" method="POST">
+            <form action="{{ route('template07.generate') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <!-- Left Column -->
@@ -98,6 +98,13 @@
                         <div class="mb-3">
                             <label for="old_passport_number" class="form-label">Old Passport Number:</label>
                             <input type="text" name="old_passport_number" id="old_passport_number" class="form-control">
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label class="col-sm-4 col-form-label">Signature:</label>
+                            <div class="col-sm-8">
+                                <input type="file" name="signature" class="form-control" accept="image/*" required>
+                            </div>
                         </div>
 
                         <div class="text-end">

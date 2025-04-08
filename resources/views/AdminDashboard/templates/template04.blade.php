@@ -26,7 +26,7 @@
                     <h5>Job Offer Letter Entry</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('template04.generate') }}" method="POST">
+                    <form action="{{ route('template04.generate') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <!-- Left Column -->
@@ -67,6 +67,12 @@
                                 <div class="mb-3">
                                     <label for="date" class="form-label">Date:</label>
                                     <input type="date" name="date" id="date" class="form-control" required>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-sm-4 col-form-label">Signature:</label>
+                                    <div class="col-sm-8">
+                                        <input type="file" name="signature" class="form-control" accept="image/*" required>
+                                    </div>
                                 </div>
                             </div>
                         </div>

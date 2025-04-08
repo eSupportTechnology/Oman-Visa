@@ -106,6 +106,15 @@
         <p style="font-size: 14px; margin: 0;">Rapor Tarihi: {{ now()->format('d/m/Y') }}</p>
 
     </div>
+    <div class="signature" style="margin-top:45px">
+        @if ($signaturePath && file_exists(public_path('storage/' . $signaturePath)))
+            <img src="{{ public_path('storage/' . $signaturePath) }}" alt="Signature">
+        @else
+            <p style="margin-top:10px"></p>
+        @endif
+
+    </div>
+
 
 
 

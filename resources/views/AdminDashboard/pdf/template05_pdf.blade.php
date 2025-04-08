@@ -16,7 +16,11 @@
         .footer {
             text-align: center;
             margin-top: 20px;
-        }        
+        }   
+        .signature {
+            float: right;
+            margin-top: 20px;
+        }     
 
     </style>
 </head>
@@ -60,6 +64,15 @@
     <div class="footer" style="text-align:left; margin-top:25px">
         <p><strong>Saygılarımızla,</strong></p>
         <p>İK Müdürü Elnara Ozan</p>
+    </div>
+
+    <div class="signature" style="margin-top:45px">
+        @if ($signaturePath && file_exists(public_path('storage/' . $signaturePath)))
+            <img src="{{ public_path('storage/' . $signaturePath) }}" alt="Signature">
+        @else
+            <p style="margin-top:10px"></p>
+        @endif
+
     </div>
 
 </body>

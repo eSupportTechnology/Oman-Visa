@@ -26,7 +26,7 @@
                     <h2>Enrollment Form</h2>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('template07_1.generate') }}" method="POST">
+                    <form action="{{ route('template07_1.generate') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <!-- Left Column -->
@@ -78,6 +78,13 @@
                                     <input type="text" name="aadhaar_no" id="aadhaar_no" class="form-control" required>
                                 </div>
                                 
+                                <div class="mb-3 row">
+                                    <label class="col-sm-4 col-form-label">Signature:</label>
+                                    <div class="col-sm-8">
+                                        <input type="file" name="signature" class="form-control" accept="image/*" required>
+                                    </div>
+                                </div>
+
                                 <div class="text-end">
                                     <button type="submit" class="btn btn-primary">Generate PDF</button>
                                 </div>
