@@ -9,11 +9,8 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\TemplateController;
 
 
-Route::get('/', function () {
-    return view('AdminDashboard.home');
-});
 
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('home');
 });
 Route::get('/userlogin', function () {
@@ -21,10 +18,10 @@ Route::get('/userlogin', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return view('AdminDashboard.home');
+})->middleware(['auth', 'verified','isadmin'])->name('dashboard.home');
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth','isadmin'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -44,6 +41,7 @@ Route::prefix('customers')->group(function () {
 
 // Work Permit Routes
 Route::prefix('work-permits')->group(function () {
+Route::prefix('work-permits')->middleware(['auth','isadmin'])->group(function () {
     Route::get('/', [WorkPermitController::class, 'index'])->name('work_permits.index'); // List all work permits
     Route::get('/create', [WorkPermitController::class, 'create'])->name('work_permits.create'); // Show create form
     Route::post('/', [WorkPermitController::class, 'store'])->name('work_permits.store'); // Store new work permit
@@ -56,7 +54,7 @@ Route::prefix('work-permits')->group(function () {
 
 
 // Template Routes
-Route::prefix('template')->group(function () {
+Route::prefix('template')->middleware(['auth','isadmin'])->group(function () {
     Route::get('/template01', [TemplateController::class, 'template01'])->name('template01.index');
     Route::post('/template01/generate', [TemplateController::class, 'generate01'])->name('template01.generate');
 
@@ -78,11 +76,27 @@ Route::prefix('template')->group(function () {
     Route::get('/template07', [TemplateController::class, 'template07'])->name('template07.index');
     Route::post('/template07/generate', [TemplateController::class, 'generate07'])->name('template07.generate');
 
+    Route::get('/template07_1', [TemplateController::class, 'template07_1'])->name('template07_1.index');
+    Route::post('/template07_1/generate', [TemplateController::class, 'generate07_1'])->name('template07_1.generate');
+
+    Route::get('/template07_2', [TemplateController::class, 'template07_2'])->name('template07_2.index');
+    Route::post('/template07_2/generate', [TemplateController::class, 'generate07_2'])->name('template07_2.generate');
+
     Route::get('/template08', [TemplateController::class, 'template08'])->name('template08.index');
     Route::post('/template08/generate', [TemplateController::class, 'generate08'])->name('template08.generate');
+
+    Route::get('/template08_1', [TemplateController::class, 'template08_1'])->name('template08_1.index');
+    Route::post('/template08_1/generate', [TemplateController::class, 'generate08_1'])->name('template08_1.generate');
+
+    Route::get('/template08_2', [TemplateController::class, 'template08_2'])->name('template08_2.index');
+    Route::post('/template08_2/generate', [TemplateController::class, 'generate08_2'])->name('template08_2.generate');
+
+    Route::get('/template09', [TemplateController::class, 'template09'])->name('template09.index');
+    Route::post('/template09/generate', [TemplateController::class, 'generate09'])->name('template09.generate');
+
 });
 
-Route::get('/show', function () {
+Route::middleware(['auth','isadmin'])->get('/show', function () {
     return view('AdminDashboard.templates.show1');
 });
 
