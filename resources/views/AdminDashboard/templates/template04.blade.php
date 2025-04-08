@@ -68,6 +68,9 @@
                                     <label for="date" class="form-label">Date:</label>
                                     <input type="date" name="date" id="date" class="form-control" required>
                                 </div>
+
+                                
+
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Generate PDF</button>

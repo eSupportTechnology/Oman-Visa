@@ -49,7 +49,7 @@
     </div>
 
     <!-- Recipient Information -->
-    <h3 style="margin-bottom:35px ;margin-top:0">İş Teklifi Mektubu</h3>
+    <h3 style="margin-bottom:35px ;margin-top:-100px;">İş Teklifi Mektubu</h3>
     <p style="line-height:0.5; margin-bottom:0"><strong>Sayın:</strong></p>
     <p>{{ $data['name'] }}<br>{{ $data['id_number'] }}</p>
 

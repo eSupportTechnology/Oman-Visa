@@ -1,93 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <title>E-Visa Check</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body, html {
+            height: 100%;
+        }
+
+        .page-wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .form-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border: 1px solid #ccc;
+        }
+
+        .form-header {
+            background-color: #0771b8;
+            color: white;
+            padding: 10px 15px;
+            font-size: 14px;
+        }
+
+        .navbar-brand h1,
+        .navbar-brand p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .logo {
+            height: 70px;
+            margin-left:100px;
+            
+        }
+
+        footer {
+            background-color: #113b81;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
+<div class="page-wrapper">
 
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #113b81; max-width: 100%; min-height: 8px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; font-weight: 300;">
-    <div class="container-fluid" style="color:#dddddd;">
-        <a class="navbar-brand d-flex align-items-center" href="#">
-            <img src="logo.png" alt="Logo" height="90" class="me-2" style="margin-left:50px;">
-            <div>
-                <h1 class="h5 mb-0 mt-2" id="header-title" style="font-size: 18px; margin-left:10px;">
-                    Ministry of Foreign Affairs of the Russian Federation
-                </h1>
-                <h1 class="h5 mb-2" id="header-subtitle" style="font-size: 18px; margin-left:10px;">
-                    Consular department
-                </h1>
-                <p style="font-size: 16px; margin-left:10px;">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #113b81; padding:20px 0 20px 0;">
+        <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap ">
+            <div class="d-flex align-items-cente ">
+                <img src="logo.png" alt="Logo" class="me-4 logo">
+            </div>
+            <div class="text-white text-start flex-grow-1">
+                <h6 class="fw-bold">Ministry of Foreign Affairs of the Russian Federation</h6>
+                <h6>Consular department</h6>
+                <p class="mb-0 small fst-italic">
                     Website for representatives of transport companies to check the validity of the e-visa for vehicle boarding only
                 </p>
             </div>
-        </a>
 
-        <div class="d-flex align-items-center ms-auto" >
             
-            <div class="dropdown" >
-                <button class="btn btn-secondary dropdown-toggle d-flex align-items-center" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#113b81;border-color:#113b81;">
-                    <img id="current-flag" src="uk.png" alt="Language" height="20" class="me-2">
-                    <span id="current-language">English</span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item d-flex align-items-center" href="#" onclick="changeLanguage('English', 'uk.png', 'Ministry of Foreign Affairs of the Russian Federation', 'Consular department')">
-                        <img src="uk.png" alt="English" height="20" class="me-2"> English</a>
-                    </li>
-                    
-                </ul>
-            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-
-<div class="container "  style="margin-top:40px;">
-<div class=" shadow-sm p-4 " style="border: 1px solid black;">
-
-        
-            <div class=" text-white  p-2  " style="margin-top:-24px;width:1295px;margin-left:-24px;background-color:rgb(7, 113, 184);border-bottom: 1px solid black;">
-              <span style="margin-left:10px;font-size:15px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; font-weight: 300;">  Website for representatives of transport companies to check the validity of the e-visa for vehicle boarding only</span>
+    <!-- Main Content -->
+    <div class="container my-5 ">
+        <div class="shadow-sm border rounded">
+            <div class="bg-primary text-white p-2">
+                <small>Website for representatives of transport companies to check the validity of the e-visa for vehicle boarding only</small>
             </div>
 
-        
-            <form action="" method="POST" class="p-4"  >
+            <form action="" method="POST" class="p-4">
                 @csrf
 
                 <div class="mb-3">
-                    <label for="application_id" class="form-label" style="font-weight:bold;">Application ID</label>
-                    <input type="text" class="form-control" id="application_id" name="application_id"  required style="width:50%">
+                    <label for="application_id" class="form-label fw-bold">Application ID</label>
+                    <input type="text" class="form-control" id="application_id" name="application_id" required>
                 </div>
 
-                
                 <div class="mb-3">
-                    <label for="verification_code" class="form-label" style="font-weight:bold;">Verification Code</label>
-                    <input type="text" class="form-control" id="verification_code" name="verification_code"  required style="width:50%">
+                    <label for="verification_code" class="form-label fw-bold">Verification Code</label>
+                    <input type="text" class="form-control" id="verification_code" name="verification_code" required>
                 </div>
 
-        
-                <div class="d-flex">
-                    <button type="submit" class="btn  me-2 text-white" style="background-color:rgb(7, 113, 184);">Status Check</button>
-                    <button type="button" class="btn  text-white" style="background-color:rgb(7, 113, 184);">Information</button>
+                <div class="d-flex flex-wrap gap-2">
+                    <button type="submit" class="btn text-white" style="background-color:rgb(7, 113, 184);">Status Check</button>
+                    <button type="button" class="btn text-white" style="background-color:rgb(7, 113, 184);">Information</button>
                 </div>
             </form>
         </div>
     </div>
 
-   
 
 
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-
 <script>
-    function changeLanguage(language, flagPath, title, subtitle) {
+    function changeLanguage(language, flagPath) {
         document.getElementById('current-language').innerText = language;
         document.getElementById('current-flag').src = flagPath;
-        document.getElementById('header-title').innerText = title;
-        document.getElementById('header-subtitle').innerText = subtitle;
     }
 </script>
-<!-- 
-<footer class="text-center text-white mt-4 py-2" style="background-color: #113b81;">
-        © Consular department of MFA of Russia, 2025
-    </footer>-->
 </body>
+</html>

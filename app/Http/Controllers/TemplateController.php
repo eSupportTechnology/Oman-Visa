@@ -21,7 +21,7 @@ class TemplateController extends Controller
             'birim_fiyat' => 'required|array',
             'miktar' => 'required|array',
             'toplam' => 'required|array',
-            'signature' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'signature' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
     
 
@@ -50,7 +50,7 @@ class TemplateController extends Controller
             'disable-smart-shrinking' => true,
         ])->setOption('encoding', 'UTF-8');
     
-        return $pdf->download("AVUKAT MUSTAFA KESKIN_{$invoice_no}.pdf"); 
+        return $pdf->inline("AVUKAT_MUSTAFA_KESKIN_{$invoice_no}.pdf");
     }
 
 
@@ -114,7 +114,7 @@ class TemplateController extends Controller
             'payment_reference' => 'required|string|max:255',
             'amount_turkish_lira' => 'required|numeric',
             'amount_foreign_currency' => 'required|numeric',
-            'footer_text' => 'required|string',
+            'footer_text' => 'string',
         ]);
 
         $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template03_pdf', compact('data'))
@@ -122,7 +122,7 @@ class TemplateController extends Controller
             ->setOption('javascript-delay', 2000) 
             ->setOption('no-stop-slow-scripts', true);
 
-        return $pdf->download('official_document.pdf');
+        return $pdf->inline('official_document.pdf');
     }
     
 
@@ -134,7 +134,7 @@ class TemplateController extends Controller
 
     public function generate04(Request $request)
     {
-
+        
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'id_number' => 'required|string|max:255',
@@ -143,6 +143,7 @@ class TemplateController extends Controller
             'working_hours' => 'required|string|max:255',
             'work_location' => 'required|string|max:255',
             'date' => 'required|date',
+            
         ]);
 
         $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template04_pdf', compact('data'))
@@ -152,7 +153,7 @@ class TemplateController extends Controller
         ->setOption('background', true); 
     
 
-        return $pdf->download('is_teklifi_mektubu.pdf');
+        return $pdf->inline('is_teklifi_mektubu.pdf');
     }
 
 
@@ -178,7 +179,7 @@ class TemplateController extends Controller
             ->setOption('no-stop-slow-scripts', true)
             ->setOption('margin-top', 20);
 
-        return $pdf->download('caddie_is_teklifi_mektubu.pdf');
+        return $pdf->inline('caddie_is_teklifi_mektubu.pdf');
     }
 
 
@@ -207,7 +208,7 @@ class TemplateController extends Controller
             ->setOption('no-stop-slow-scripts', true) 
             ->setOption('margin-top', 10);
 
-        return $pdf->download('is_teklifi_mektubu.pdf');
+        return $pdf->inline('is_teklifi_mektubu.pdf');
     }
 
 
@@ -241,7 +242,7 @@ class TemplateController extends Controller
             ->setOption('no-stop-slow-scripts', true) 
             ->setOption('margin-top', 10);
 
-        return $pdf->download('passport_information.pdf');
+        return $pdf->inline('passport_information.pdf');
     }
 
 
@@ -280,7 +281,7 @@ class TemplateController extends Controller
             ->setOption('no-stop-slow-scripts', true) 
             ->setOption('margin-top', 10);
 
-        return $pdf->download('passport_verification_document.pdf');
+        return $pdf->inline('passport_verification_document.pdf');
     }
 
 }
