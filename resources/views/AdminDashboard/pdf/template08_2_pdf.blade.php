@@ -80,6 +80,15 @@
     <div class="footer" style="text-align:left; margin-left:15px; margin-top: 20px;">
         <p><strong style="font-size:17px">Ayukat</strong><br>Avukat Mustafa<br>Keskın</p>
     </div>
+    <div class="signature" style="margin-top:45px">
+        @if ($signaturePath && file_exists(public_path('storage/' . $signaturePath)))
+            <img src="{{ public_path('storage/' . $signaturePath) }}" alt="Signature">
+        @else
+            <p style="margin-top:10px"></p>
+        @endif
+
+    </div>
+
     
 
 </body>

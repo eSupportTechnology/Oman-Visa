@@ -81,6 +81,15 @@
     <div style="line-height: 1.5; margin-top: 15px;">
         <p style="font-size: 14px; margin: 0;">Eski Pasaport Numarası / Old Passport No: {{ $data['old_passport_number'] }}</p>
     </div>
+    <div class="signature" style="margin-top:45px">
+        @if ($signaturePath && file_exists(public_path('storage/' . $signaturePath)))
+            <img src="{{ public_path('storage/' . $signaturePath) }}" alt="Signature">
+        @else
+            <p style="margin-top:10px"></p>
+        @endif
+
+    </div>
+
 
 </body>
 </html>

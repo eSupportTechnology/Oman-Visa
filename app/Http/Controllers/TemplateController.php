@@ -83,9 +83,16 @@ class TemplateController extends Controller
             'residence_duration' => 'required|integer|min:1',
             'additional_visa_info' => 'nullable|string',
             'conditions' => 'nullable|string',
+            'signature' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
         ]);
+        if ($request->hasFile('signature')) {
+            $signaturePath = $request->file('signature')->store('signatures', 'public');
+        } else {
+            $signaturePath = null; 
+        }
     
-        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template02_pdf', compact('data'), [
+        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template02_pdf', compact('data','signaturePath'), [
             'enable-local-file-access' => true,
             'no-stop-slow-scripts' => true,
             'disable-smart-shrinking' => true,
@@ -115,9 +122,16 @@ class TemplateController extends Controller
             'amount_turkish_lira' => 'required|numeric',
             'amount_foreign_currency' => 'required|numeric',
             'footer_text' => 'required|string',
-        ]);
+            'signature' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
-        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template03_pdf', compact('data'))
+        ]);
+        if ($request->hasFile('signature')) {
+            $signaturePath = $request->file('signature')->store('signatures', 'public');
+        } else {
+            $signaturePath = null; 
+        }
+
+        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template03_pdf', compact('data','signaturePath'))
             ->setOption('enable-javascript', true) 
             ->setOption('javascript-delay', 2000) 
             ->setOption('no-stop-slow-scripts', true);
@@ -143,9 +157,16 @@ class TemplateController extends Controller
             'working_hours' => 'required|string|max:255',
             'work_location' => 'required|string|max:255',
             'date' => 'required|date',
-        ]);
+            'signature' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
-        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template04_pdf', compact('data'))
+        ]);
+        if ($request->hasFile('signature')) {
+            $signaturePath = $request->file('signature')->store('signatures', 'public');
+        } else {
+            $signaturePath = null; 
+        }
+
+        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template04_pdf', compact('data','signaturePath'))
         ->setOption('enable-javascript', true) 
         ->setOption('javascript-delay', 2000)
         ->setOption('no-stop-slow-scripts', true)
@@ -170,9 +191,16 @@ class TemplateController extends Controller
             'passport_number' => 'required|string|max:255',
             'salary' => 'required|numeric|min:0',
             'date' => 'required|date',
-        ]);
+            'signature' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
-        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template05_pdf', compact('data'))
+        ]);
+        if ($request->hasFile('signature')) {
+            $signaturePath = $request->file('signature')->store('signatures', 'public');
+        } else {
+            $signaturePath = null; 
+        }
+
+        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template05_pdf', compact('data','signaturePath'))
             ->setOption('enable-javascript', true)
             ->setOption('javascript-delay', 2000)
             ->setOption('no-stop-slow-scripts', true)
@@ -199,9 +227,16 @@ class TemplateController extends Controller
             'working_hours' => 'required|string|max:255',
             'work_location' => 'required|string|max:255',
             'date' => 'required|date',
-        ]);
+            'signature' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
-        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template06_pdf', compact('data'))
+        ]);
+        if ($request->hasFile('signature')) {
+            $signaturePath = $request->file('signature')->store('signatures', 'public');
+        } else {
+            $signaturePath = null; 
+        }
+
+        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template06_pdf', compact('data','signaturePath'))
             ->setOption('enable-javascript', true) 
             ->setOption('javascript-delay', 2000) 
             ->setOption('no-stop-slow-scripts', true) 
@@ -233,10 +268,17 @@ class TemplateController extends Controller
             'mother_name' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'old_passport_number' => 'nullable|string|max:255',
+            'signature' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
         ]);
+        if ($request->hasFile('signature')) {
+            $signaturePath = $request->file('signature')->store('signatures', 'public');
+        } else {
+            $signaturePath = null; 
+        }
 
         try{
-        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template07_pdf', compact('data'))
+        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template07_pdf', compact('data','signaturePath'))
             ->setOption('enable-javascript', true)
             ->setOption('javascript-delay', 2000) 
             ->setOption('no-stop-slow-scripts', true) 
@@ -266,10 +308,17 @@ class TemplateController extends Controller
             'address' => 'required|string|max:255',
             'mobile_no' => 'required|string|max:20',
             'aadhaar_no' => 'required|string|max:20',
+            'signature' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
         ]);
+        if ($request->hasFile('signature')) {
+            $signaturePath = $request->file('signature')->store('signatures', 'public');
+        } else {
+            $signaturePath = null; 
+        }
     
         try {
-            $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template07_1_pdf', compact('validatedData'))
+            $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template07_1_pdf', compact('validatedData','signaturePath'))
                 ->setOption('enable-javascript', true)
                 ->setOption('javascript-delay', 1000) 
                 ->setOption('no-stop-slow-scripts', true) 
@@ -296,10 +345,17 @@ class TemplateController extends Controller
         'publication_date' => 'required|date',
         'approval' => 'required|string|max:255',
         'Issuance' => 'required|string|max:255',
+        'signature' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
     ]);
+    if ($request->hasFile('signature')) {
+        $signaturePath = $request->file('signature')->store('signatures', 'public');
+    } else {
+        $signaturePath = null; 
+    }
 
     try {
-        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template07_2_pdf', compact('validatedData'))
+        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template07_2_pdf', compact('validatedData','signaturePath'))
             ->setOption('enable-javascript', true)
             ->setOption('javascript-delay', 2000)
             ->setOption('no-stop-slow-scripts', true)
@@ -338,10 +394,17 @@ class TemplateController extends Controller
             'old_passport_number' => 'nullable|string|max:255',
             'old_issue_date' => 'nullable|date',
             'old_issuance_location' => 'nullable|string|max:255',
+            'signature' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
         ]);
+        if ($request->hasFile('signature')) {
+            $signaturePath = $request->file('signature')->store('signatures', 'public');
+        } else {
+            $signaturePath = null; 
+        }
       
         try {
-            $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template08_pdf', compact('validatedData'))
+            $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template08_pdf', compact('validatedData','signaturePath'))
                 ->setOption('enable-javascript', true)
                 ->setOption('javascript-delay', 1000) 
                 ->setOption('no-stop-slow-scripts', true)
@@ -379,10 +442,17 @@ class TemplateController extends Controller
             'dob' => 'required|date',
             'gender' => 'required|string|max:255',
             'aadhaar_message' => 'required|string|max:500',
+            'signature' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
         ]);
+        if ($request->hasFile('signature')) {
+            $signaturePath = $request->file('signature')->store('signatures', 'public');
+        } else {
+            $signaturePath = null; 
+        }
         
         try {
-            $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template08_1_pdf', compact('validatedData'))
+            $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template08_1_pdf', compact('validatedData','signaturePath'))
                 ->setOption('enable-javascript', true)
                 ->setOption('javascript-delay', 1000)
                 ->setOption('no-stop-slow-scripts', true)
@@ -416,10 +486,17 @@ class TemplateController extends Controller
             'date'=>'required|date',
             'c_no'=> 'required|string|max:255',
             'end_date' => 'required|date|after_or_equal:start_date',
+            'signature' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
         ]);
+        if ($request->hasFile('signature')) {
+            $signaturePath = $request->file('signature')->store('signatures', 'public');
+        } else {
+            $signaturePath = null; 
+        }
         
         try {
-            $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template08_2_pdf', compact('validatedData'))
+            $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template08_2_pdf', compact('validatedData','signaturePath'))
                 ->setOption('enable-javascript', true)
                 ->setOption('javascript-delay', 1000)
                 ->setOption('no-stop-slow-scripts', true)
@@ -447,10 +524,19 @@ class TemplateController extends Controller
             'salary' => 'required|numeric',
             'days' => 'required|integer',
             'date' => 'required|date',
+            'signature' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
         ]);
+        if ($request->hasFile('signature')) {
+            $signaturePath = $request->file('signature')->store('signatures', 'public');
+        } else {
+            $signaturePath = null; 
+        }
+
+
         
         try {
-            $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template09_pdf', compact('validatedData'))
+            $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template09_pdf', compact('validatedData','signaturePath'))
                 ->setOption('enable-javascript', true)
                 ->setOption('javascript-delay', 1000)
                 ->setOption('no-stop-slow-scripts', true)

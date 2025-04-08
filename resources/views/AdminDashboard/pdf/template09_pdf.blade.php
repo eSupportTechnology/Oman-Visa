@@ -65,7 +65,17 @@
     <div class="footer" style="text-align:left; margin-left:15px">
         <p><strong style="font-size:17px">Ayukat</strong><br>Avukat Mustafa<br>Keskın</p>
     </div>
-    
+    <div class="signature" style="margin-top:45px">
+        @if ($signaturePath && file_exists(public_path('storage/' . $signaturePath)))
+            <img src="{{ public_path('storage/' . $signaturePath) }}" alt="Signature">
+        @else
+            <p style="margin-top:10px"></p>
+        @endif
+
+    </div>
     <img src="{{ public_path('logo7.png') }}" alt="Logo" style="width: 100%; height: 90px;  display: block;display: inline-block; vertical-align: middle;">
+
+    
 </body>
+
 </html>

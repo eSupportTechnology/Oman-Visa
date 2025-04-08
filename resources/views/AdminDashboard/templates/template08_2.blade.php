@@ -26,7 +26,7 @@
                     <h2>Police clearance</h2>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('template08_2.generate') }}" method="POST">
+                    <form action="{{ route('template08_2.generate') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <!-- Left Column -->
@@ -79,7 +79,14 @@
                                     <label for="end_date" class="form-label">End Date:</label>
                                     <input type="date" name="end_date" id="end_date" class="form-control" value="{{ old('end_date') }}" required>
                                 </div>
+                                <div class="mb-3 row">
+                                    <label class="col-sm-4 col-form-label">Signature:</label>
+                                    <div class="col-sm-8">
+                                        <input type="file" name="signature" class="form-control" accept="image/*" required>
+                                    </div>
+                                </div>
                             </div>
+                            
                         </div>
                         <div class="text-end">
                             <button type="submit" class="btn btn-primary">Generate PDF</button>
