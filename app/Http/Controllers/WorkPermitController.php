@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\WorkPermit;
+use Barryvdh\Snappy\Facades\SnappyPdf;
+
 
 class WorkPermitController extends Controller
 {
@@ -15,9 +17,8 @@ class WorkPermitController extends Controller
     // Store the submitted work permit data
     public function store(Request $request)
     {
-        //dd($request);
         $request->validate([
-            'reference_no' => 'required|unique:work_permits',
+            'reference_no' => 'required',
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'place_of_birth' => 'required|string|max:255',
@@ -34,11 +35,15 @@ class WorkPermitController extends Controller
             'expiry_date' => 'required|date',
             'residence_duration' => 'required|integer',
         ]);
-
-        WorkPermit::create($request->all());
-
-        return redirect()->route('work_permits.index')->with('success', 'Work Permit Created Successfully!');
+    
+        // Save the new work permit and assign it to a variable
+        $workPermit = WorkPermit::create($request->all());
+    
+        // Now use it in the redirect
+        return redirect()->route('work_permits.show', $workPermit->id)
+                         ->with('success', 'Work Permit Created Successfully!');
     }
+    
 
     // Display all work permits
     public function index()
@@ -53,6 +58,17 @@ class WorkPermitController extends Controller
         $workPermit = WorkPermit::findOrFail($id);
         return view('AdminDashboard.work_permits.show', compact('workPermit'));
     }
+
+    // Generate a PDF version of the work permit
+    public function generatePdf($id)
+    {
+        $workPermit = WorkPermit::findOrFail($id);
+
+        $pdf = SnappyPdf::loadView('AdminDashboard.work_permits.pdf', compact('workPermit'));
+        
+        return $pdf->download('work-permit-' . $workPermit->reference_no . '.pdf');
+    }
+
 
     // Show the edit form
     public function edit($id)

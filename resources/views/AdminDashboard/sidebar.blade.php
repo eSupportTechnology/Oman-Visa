@@ -3,19 +3,12 @@
     <div>
         <!-- Logo Section -->
         <div class="logo-wrapper">
-            <a href="{{ route('dashboard.home') }}" >
-                <img class="img-fluid for-light" src="{{ asset('logo.png') }}" alt="Logo"style="padding-left:55px; height:75px;">
-                <img class="img-fluid for-dark" src="{{ asset('logo.png') }}" alt="Logo Dark"style="padding-left:55px; height:75px;">
-            </a>
+            
             <div class="back-btn"><i class="fa fa-angle-left"></i></div>
             <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid"></i></div>
         </div>
 
-        <div class="logo-icon-wrapper">
-            <a href="{{ route('dashboard.home') }}">
-                <img class="img-fluid" src="{{ asset('frontend/assets/images/logo/logo-icon.png') }}" alt="Logo Icon">
-            </a>
-        </div>
+        
 
         <nav class="sidebar-main">
             <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
@@ -31,12 +24,17 @@
                     </li>
 
                     <!-- Dashboard -->
+                    <!-- Dashboard -->
                     <li class="sidebar-list">
                         <a class="sidebar-link sidebar-title {{ request()->routeIs('dashboard.home') ? 'active' : '' }}" href="{{ route('dashboard.home') }}">
                             <i class="fa fa-home"></i>
                             <span>Dashboard</span>
                         </a>
+                        <ul class="sidebar-submenu">
+                            <li><a href="{{ route('dashboard.home') }}">Dashboard</a></li>
+                        </ul>
                     </li>
+
 
                     <!-- User Management Section -->
                     <li class="sidebar-main-title">
@@ -55,7 +53,7 @@
                         </ul>
                     </li>
 
-                    <!-- Work Permit Management Section -->
+                    <!-- Work Permit Management Section
                     <li class="sidebar-main-title">
                         <div><h6>Work Permits</h6></div>
                     </li>
@@ -68,7 +66,7 @@
                             <li><a href="{{ route('work_permits.index') }}">All Work Permits</a></li>
                             <li><a href="{{ route('work_permits.create') }}">Create Work Permit</a></li>
                         </ul>
-                    </li>
+                    </li> -->
 
                     <!-- Template Section -->
                     <li class="sidebar-main-title">
@@ -80,11 +78,11 @@
                             <span>Templates</span>
                         </a>
                         <ul class="sidebar-submenu">
-                            <li><a href="{{ route('template01.index') }}">Template01</a></li>
-                            <li><a href="{{ route('template02.index') }}">Work Permit Details</a></li>
-                            <li><a href="{{ route('template03.index') }}">Template03</a></li>
-                            <li><a href="{{ route('template04.index') }}">Job Offer Letter Entry</a></li>
-                            <li><a href="{{ route('template05.index') }}">Caddie Job Offer Letter Entry</a></li>
+                            <li><a href="{{ route('template01.index') }}">Translation Risit</a></li>
+                            <li><a href="{{ route('work_permits.create') }}">Barcode </a></li>
+                            <li><a href="{{ route('template03.index') }}">Guchidara Slip</a></li>
+                            <li><a href="{{ route('template04.index') }}">Translation & notry</a></li>
+                            <!--<li><a href="{{ route('template05.index') }}">Caddie Job Offer Letter Entry</a></li>
                             <li><a href="{{ route('template06.index') }}">Template06</a></li>
                             <li><a href="{{ route('template07.index') }}">Passport </a></li>
                             <li><a href="{{ route('template07_1.index') }}">Enrollment </a></li>
@@ -92,7 +90,7 @@
                             <li><a href="{{ route('template08.index') }}">Passport verification </a></li>
                             <li><a href="{{ route('template08_1.index') }}">Registration </a></li>
                             <li><a href="{{ route('template08_2.index') }}">Police Clearance  </a></li>
-                            <li><a href="{{ route('template09.index') }}">job offer  </a></li>
+                            <li><a href="{{ route('template09.index') }}">job offer  </a></li>-->
 
                         </ul>
                     </li>

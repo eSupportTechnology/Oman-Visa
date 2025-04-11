@@ -12,20 +12,35 @@ use App\Http\Controllers\TemplateController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('homepage');
+
+// Handle login
+Route::post('/customer-login', [CustomerController::class, 'login'])->name('customer.login');
+
+// Show customer details
+Route::get('/customer-details/{id}', [CustomerController::class, 'showDetails'])->name('customer.details');
+Route::post('/customer-logout', [CustomerController::class, 'logout'])->name('logouttt');
+
+
 Route::get('/userlogin', function () {
     return view('userlogin');
 });
 
+
+
 Route::get('/dashboard', function () {
     return view('AdminDashboard.home');
-})->middleware(['auth', 'verified','isadmin'])->name('dashboard.home');
+})->name('dashboard.home');
 
 Route::middleware(['auth','isadmin'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::post('/logout', [ProfileController::class, 'destroy'])->name('logout');
 });
+
+
+
 
 Route::prefix('customers')->group(function () {
 
@@ -41,7 +56,6 @@ Route::prefix('customers')->group(function () {
 
 // Work Permit Routes
 Route::prefix('work-permits')->group(function () {
-Route::prefix('work-permits')->middleware(['auth','isadmin'])->group(function () {
     Route::get('/', [WorkPermitController::class, 'index'])->name('work_permits.index'); // List all work permits
     Route::get('/create', [WorkPermitController::class, 'create'])->name('work_permits.create'); // Show create form
     Route::post('/', [WorkPermitController::class, 'store'])->name('work_permits.store'); // Store new work permit
@@ -50,11 +64,13 @@ Route::prefix('work-permits')->middleware(['auth','isadmin'])->group(function ()
     Route::put('/{id}', [WorkPermitController::class, 'update'])->name('work_permits.update'); // Update work permit
     Route::delete('/{id}', [WorkPermitController::class, 'destroy'])->name('work_permits.destroy'); // Delete work permit
     Route::get('/{id}/template', [WorkPermitController::class, 'template'])->name('work_permits.template'); // Generate work permit template
+    Route::get('/{id}/pdf', [WorkPermitController::class, 'generatePdf'])->name('work_permits.pdf');
+
 });
 
 
 // Template Routes
-Route::prefix('template')->middleware(['auth','isadmin'])->group(function () {
+Route::prefix('template')->group(function () {
     Route::get('/template01', [TemplateController::class, 'template01'])->name('template01.index');
     Route::post('/template01/generate', [TemplateController::class, 'generate01'])->name('template01.generate');
 
@@ -96,8 +112,7 @@ Route::prefix('template')->middleware(['auth','isadmin'])->group(function () {
 
 });
 
-Route::middleware(['auth','isadmin'])->get('/show', function () {
-    return view('AdminDashboard.templates.show1');
-});
+return view('AdminDashboard.templates.show1');
+
 
 require __DIR__.'/auth.php';

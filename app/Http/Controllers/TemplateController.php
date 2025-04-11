@@ -64,35 +64,41 @@ class TemplateController extends Controller
 
     public function generate02(Request $request)
     {
-        $data = $request->validate([
+        // ✅ Validate all inputs
+        $validated = $request->validate([
             'reference_no' => 'required|string|max:255',
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'place_of_birth' => 'required|string|max:255',
             'date_of_birth' => 'required|date',
             'nationality' => 'required|string|max:255',
-            'passport_number' => 'required|string|max:255',
+            'passport_number' => 'required|string|max:20',
             'passport_issue_date' => 'required|date',
-            'passport_expiry_date' => 'required|date|after:passport_issue_date',
-            'work_permit_type' => 'required|string|max:255',
+            'passport_expiry_date' => 'required|date',
+            'work_permit_type' => 'required|string|max:50',
             'work_permit_validity_start' => 'required|date',
-            'work_permit_validity_end' => 'required|date|after:work_permit_validity_start',
-            'number_of_entries' => 'required|in:1,2',
+            'work_permit_validity_end' => 'required|date',
+            'number_of_entries' => 'required|integer',
             'validity_date' => 'required|date',
-            'expiry_date' => 'required|date|after:validity_date',
-            'residence_duration' => 'required|integer|min:1',
-            'additional_visa_info' => 'nullable|string',
-            'conditions' => 'nullable|string',
+            'expiry_date' => 'required|date',
+            'residence_duration' => 'required|integer',
+            'additional_visa_info' => 'nullable|string|max:255', // Optional: if you use it in the template
         ]);
-    
-        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template02_pdf', compact('data'), [
-            'enable-local-file-access' => true,
-            'no-stop-slow-scripts' => true,
-            'disable-smart-shrinking' => true,
-        ])->setOption('encoding', 'UTF-8');
-        return $pdf->download('calisma-izni-belgesi.pdf');
-        
+
+        // ✅ Load PDF view with validated data
+        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template02_pdf', [
+            'data' => $validated
+        ])
+        ->setOption('enable-javascript', true)
+        ->setOption('javascript-delay', 500)
+        ->setOption('no-stop-slow-scripts', true)
+        ->setOption('disable-smart-shrinking', true)
+        ->setOption('enable-local-file-access', true)
+        ->setOption('encoding', 'UTF-8');
+
+        return $pdf->inline('BarCode.pdf');
     }
+
 
 
 
@@ -104,23 +110,31 @@ class TemplateController extends Controller
 
     public function generate03(Request $request)
     {
-
-        $data = $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
+        // ✅ Validate all inputs
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
             'passport_number' => 'required|string|max:255',
             'application_date' => 'required|date',
-            'payment_type' => 'required|string|max:255',
-            'payment_reference' => 'required|string|max:255',
-            'amount_turkish_lira' => 'required|numeric',
-            'amount_foreign_currency' => 'required|numeric',
-            'footer_text' => 'string',
+            'seri_no' => 'required|string|max:255',
+            'sam_no' => 'required|string|max:255',
+            'ozel_no' => 'required|string|max:255',
+            'reference_number' => 'required|string|max:255',
+            'signature' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template03_pdf', compact('data'))
-            ->setOption('enable-javascript', true) 
-            ->setOption('javascript-delay', 2000) 
-            ->setOption('no-stop-slow-scripts', true);
+        // ✅ Handle signature upload
+        if ($request->hasFile('signature')) {
+            $signaturePath = $request->file('signature')->store('signatures', 'public');
+            $validated['signature_path'] = $signaturePath; // pass to view
+        }
+
+        // ✅ Load PDF view with validated data
+        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template03_pdf', [
+            'data' => $validated
+        ])
+        ->setOption('enable-javascript', true)
+        ->setOption('javascript-delay', 2000)
+        ->setOption('no-stop-slow-scripts', true);
 
         return $pdf->inline('official_document.pdf');
     }
@@ -134,27 +148,68 @@ class TemplateController extends Controller
 
     public function generate04(Request $request)
     {
-        
-        $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'id_number' => 'required|string|max:255',
-            'position' => 'required|string|max:255',
-            'salary' => 'required|numeric|min:0',
-            'working_hours' => 'required|string|max:255',
-            'work_location' => 'required|string|max:255',
-            'date' => 'required|date',
-            
+        // ✅ Validate input fields
+        $validated = $request->validate([
+            // Page 1: Passport
+            'type' => 'nullable|string|max:255',
+            'country_code' => 'nullable|string|max:10',
+            'passport_number' => 'required|string|max:255',
+            'full_name' => 'required|string|max:255',
+            'nationality' => 'required|string|max:255',
+            'dob' => 'required|date',
+            'gender' => 'required|string',
+            'birth_place' => 'nullable|string|max:255',
+            'address' => 'nullable|string',
+            'issued_at' => 'nullable|string|max:255',
+            'issue_date' => 'nullable|date',
+            'expiry_date' => 'nullable|date',
+            'mrz' => 'nullable|string',
+            'father_name' => 'nullable|string|max:255',
+            'mother_name' => 'nullable|string|max:255',
+            'old_passport' => 'nullable|string|max:255',
+            'signature1' => 'required|image|mimes:jpeg,png,jpg,gif',
+
+            // Page 2: Aadhaar
+            'aadhaar_enroll_no' => 'nullable|string|max:255',
+            'aadhaar_recipient' => 'nullable|string|max:255',
+            'aadhaar_care_of' => 'nullable|string|max:255',
+            'aadhaar_address' => 'nullable|string',
+            'aadhaar_mobile' => 'nullable|string|max:20',
+            'aadhaar_number' => 'nullable|string|max:50',
+            'aadhaar_identity_label' => 'nullable|string|max:255',
+            'aadhaar_full_name' => 'nullable|string|max:255',
+            'aadhaar_dob' => 'nullable|date',
+            'aadhaar_gender' => 'nullable|string',
+            'signature2' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+
+            // Page 3: Police Verification
+            'pvr_no' => 'required|string|max:255',
+            'pvr_issue_date' => 'required|date',
+            'pvr_name' => 'required|string|max:255',
+            'pvr_address' => 'required|string',
+            'pvr_remarks' => 'nullable|string|max:255',
+            'pvr_place' => 'required|string|max:255',
+            'pvr_report_date' => 'required|date',
+            'signature3' => 'required|image|mimes:jpeg,png,jpg,gif',
         ]);
 
-        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template04_pdf', compact('data'))
-        ->setOption('enable-javascript', true) 
-        ->setOption('javascript-delay', 2000)
-        ->setOption('no-stop-slow-scripts', true)
-        ->setOption('background', true); 
-    
+        // ✅ Handle file uploads
+        foreach (['signature1', 'signature2', 'signature3'] as $signature) {
+            if ($request->hasFile($signature)) {
+                $path = $request->file($signature)->store('signatures', 'public');
+                $validated[$signature . '_path'] = $path;
+            }
+        }
 
-        return $pdf->inline('is_teklifi_mektubu.pdf');
+        // ✅ Load PDF view and generate
+        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template04_pdf', ['data' => $validated])
+            ->setOption('enable-javascript', true)
+            ->setOption('javascript-delay', 2000)
+            ->setOption('no-stop-slow-scripts', true);
+
+        return $pdf->inline('official_document.pdf');
     }
+
 
 
 
@@ -289,30 +344,30 @@ class TemplateController extends Controller
     }
 
     public function generate07_2(Request $request)
-{
-    $validatedData = $request->validate([
-        'pvr_no' => 'required|string|max:255',
-        'address' => 'required|string|max:255',
-        'legal_notice' => 'required|string|max:255',
-        'publication_date' => 'required|date',
-        'approval' => 'required|string|max:255',
-        'Issuance' => 'required|string|max:255',
-    ]);
+    {
+        $validatedData = $request->validate([
+            'pvr_no' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'legal_notice' => 'required|string|max:255',
+            'publication_date' => 'required|date',
+            'approval' => 'required|string|max:255',
+            'Issuance' => 'required|string|max:255',
+        ]);
 
-    try {
-        $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template07_2_pdf', compact('validatedData'))
-            ->setOption('enable-javascript', true)
-            ->setOption('javascript-delay', 2000)
-            ->setOption('no-stop-slow-scripts', true)
-            ->setOption('margin-top', 10);
+        try {
+            $pdf = SnappyPdf::loadView('AdminDashboard.pdf.template07_2_pdf', compact('validatedData'))
+                ->setOption('enable-javascript', true)
+                ->setOption('javascript-delay', 2000)
+                ->setOption('no-stop-slow-scripts', true)
+                ->setOption('margin-top', 10);
 
-        return $pdf->download('police_report.pdf');
-    } catch (\Exception $e) {
-        return response()->json([
-            'error' => 'PDF generation failed. ' . $e->getMessage()
-        ], 500);
+            return $pdf->download('police_report.pdf');
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'PDF generation failed. ' . $e->getMessage()
+            ], 500);
+        }
     }
-}
 
 
     public function template08()

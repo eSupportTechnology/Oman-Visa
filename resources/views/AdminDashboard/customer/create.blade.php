@@ -27,6 +27,10 @@
                                     <label for="nationality" class="form-label">Nationality</label>
                                     <input type="text" name="nationality" class="form-control" required>
                                 </div>
+                                <div class="col-md-6">
+                                    <label for="dob" class="form-label">Date of Birth</label>
+                                    <input type="date" name="dob" class="form-control" required>
+                                </div>
                             </div>
                         </div>
 
@@ -57,9 +61,16 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="reference_no" class="form-label">Reference Number</label>
-                                <input type="text" name="reference_no" class="form-control">
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="reference_no" class="form-label">Reference Number</label>
+                                    <input type="text" name="reference_no" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="visa_type" class="form-label">Visa Type</label>
+                                    <input type="text" name="visa_type" class="form-control" placeholder="E.g., Work Visa, Tourist Visa">
+                                </div>
                             </div>
                         </div>
 

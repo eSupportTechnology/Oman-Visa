@@ -37,6 +37,7 @@
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Password</th>
+                                    <th>Work Permit Status</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -46,6 +47,19 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $customer->name }}</td>
                                     <td>{{ $customer->password }}</td>
+                                    <td>
+                                        @php
+                                            $status = $customer->work_permit_status;
+                                            $badgeClass = match($status) {
+                                                'Approved' => 'bg-success',
+                                                'Pending' => 'bg-warning text-dark',
+                                                'Rejected' => 'bg-danger',
+                                                default => 'bg-secondary'
+                                            };
+                                        @endphp
+                                        <span class="badge {{ $badgeClass }}">{{ $status ?? 'N/A' }}</span>
+                                    </td>
+
                                     <td>
                                         <a href="{{ route('customers.show', $customer->id) }}" class="btn btn-info btn-sm" title="View Details">
                                             <i class="icon-eye"></i> See More

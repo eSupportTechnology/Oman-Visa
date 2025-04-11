@@ -3,7 +3,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+class CreateWorkPermitsTable extends Migration
+{
     public function up()
     {
         Schema::create('work_permits', function (Blueprint $table) {
@@ -14,17 +15,17 @@ return new class extends Migration {
             $table->string('place_of_birth');
             $table->date('date_of_birth');
             $table->string('nationality');
-            $table->string('passport_number');
+            $table->string('passport_number', 20);
             $table->date('passport_issue_date');
             $table->date('passport_expiry_date');
-            $table->string('work_permit_type');
+            $table->string('work_permit_type', 50);
             $table->date('work_permit_validity_start');
             $table->date('work_permit_validity_end');
-            $table->integer('number_of_entries')->default(1); // 1 for single, multiple for more
+            $table->integer('number_of_entries');
             $table->date('validity_date');
             $table->date('expiry_date');
-            $table->integer('residence_duration')->default(1); // Years
-            $table->string('additional_visa_info')->nullable();
+            $table->integer('residence_duration');
+            $table->text('additional_visa_info')->nullable();
             $table->text('conditions')->nullable();
             $table->timestamps();
         });
@@ -34,4 +35,4 @@ return new class extends Migration {
     {
         Schema::dropIfExists('work_permits');
     }
-};
+}

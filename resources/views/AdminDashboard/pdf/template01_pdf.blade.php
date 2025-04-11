@@ -22,15 +22,16 @@
         }
 
         .address {
-            margin-top: 100px;
             line-height: 1.4;
             font-size: 14px;
+            margin-top: -20px;
         }
 
         .invoice-info {
             text-align: right;
+            line-height: 1.2;
             font-size: 14px;
-            margin-top: -80px;
+            margin-top: 100px;
         }
 
         table {
@@ -78,6 +79,11 @@
         <img src="{{ public_path('logo1.png') }}" alt="Logo">
     </div>
 
+    <div class="invoice-info "  >
+        <p><strong>FATURA NO:</strong> {{ $data['invoice_no'] }}</strong></p>
+        <p>TARİH: {{ $data['date'] }}</p>
+    </div>
+
     <!-- Address and Invoice Info -->
     <div class="address">
         <strong>AVUKAT MUSTAFA KESKIN</strong><br>
@@ -86,11 +92,6 @@
         Maltepe/Istanbul, Türkiye<br>
         fo@mustafakeskin av. 30 542<br>
         415 67 24
-    </div>
-
-    <div class="invoice-info">
-        <p><strong>FATURA NO:</strong> {{ $data['invoice_no'] }}</p>
-        <p><strong>TARİH:</strong> {{ $data['date'] }}</p>
     </div>
 
     <!-- Table -->

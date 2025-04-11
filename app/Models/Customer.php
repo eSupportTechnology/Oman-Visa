@@ -3,22 +3,41 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Auth\User as Authenticatable; // If you're logging customers in
+use Illuminate\Notifications\Notifiable;
 
-class Customer extends Model
+class Customer extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     protected $fillable = [
-        'work_permit_status', 'name', 'nationality', 'passport_number', 'passport_expiry_date',
-        'work_permit_duration', 'reference_no', 'password','status', 'file1', 'file2', 'file3',
-        'file4', 'file5', 'file6', 'file7', 'file8', 'file9'
+        'name',
+        'nationality',
+        'dob',
+        'passport_number',
+        'passport_expiry_date',
+        'work_permit_duration',
+        'work_permit_status',
+        'reference_no',
+        'visa_type',
+        'password',
+        'file1',
+        'file2',
+        'file3',
+        'file4',
+        'file5',
+        'file6',
+        'file7',
+        'file8',
+        'file9',
     ];
 
-    // Automatically hash the password before saving
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = Hash::make($value);
-    }
+    protected $hidden = [
+        'password',
+    ];
+
+    protected $casts = [
+        'dob' => 'date',
+        'passport_expiry_date' => 'date',
+    ];
 }

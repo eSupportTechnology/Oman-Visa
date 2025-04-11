@@ -42,21 +42,7 @@
                     @endif
                 </div>
             </div>
-            <ul class="profile-dropdown onhover-show-div">
-              <li><a href="#"><i data-feather="user"></i><span>Account </span></a></li>
-              <li><a href="#"><i data-feather="mail"></i><span>Inbox</span></a></li>
-              <li><a href="#"><i data-feather="file-text"></i><span>Taskboard</span></a></li>
-              <li><a href="#"><i data-feather="settings"></i><span>Settings</span></a></li>
-              <li>
-                <form method="POST" style="display: inline;" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" style="background: none; border: none; color: inherit; padding: 0; cursor: pointer;">
-                        <i data-feather="log-in"></i>
-                        <span>Log out</span>
-                    </button>
-                </form>
-            </li>
-            </ul>
+            
           </li>
         </ul>
       </div>

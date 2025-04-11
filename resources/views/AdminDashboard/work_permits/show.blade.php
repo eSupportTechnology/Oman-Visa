@@ -68,6 +68,7 @@
 <button class="btn btn-primary download-btn" onclick="downloadPdf()">Download PDF</button><br>
 <button class="btn btn-success download-btn" onclick="downloadImage()">Download Image (JPG)</button>
 
+
 <div class="document-container" id="document-container" style=" width: 210mm;
         height: 297mm;
         margin: auto;
@@ -209,7 +210,7 @@
 
         // Use html2canvas to capture the HTML content
         html2canvas(element, {
-            scale: 2, // Increase scale for better resolution
+            scale: 1.4, // Increase scale for better resolution
             scrollY: 0,
             scrollX: 0,
         }).then(canvas => {
