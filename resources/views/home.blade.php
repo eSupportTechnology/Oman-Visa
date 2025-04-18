@@ -101,7 +101,7 @@
     <div class="container my-5">
         <div class="shadow-sm border rounded">
             <div class="highlight-bar text-white p-2">
-                <small>Website for Work Permit Status</small>
+                <small>Çalışma İzni Durumu Sorgulama (Website for Work Permit Status)</small>
             </div>
 
 
@@ -110,12 +110,12 @@
 
 
                 <div class="mb-3">
-                    <label for="application_id" class="form-label fw-bold">Passport Number </label>
+                    <label for="application_id" class="form-label fw-bold">Pasaport Numarası (Passport Number) </label>
                     <input type="text" class="form-control" id="application_id" name="application_id" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="verification_code" class="form-label fw-bold">Password</label>
+                    <label for="verification_code" class="form-label fw-bold">Şifre (Password)</label>
                     <div class="input-group">
                         <input type="password" class="form-control" id="verification_code" name="verification_code" required>
                         <button class="btn btn-outline-secondary" type="button" id="togglePassword">
@@ -134,8 +134,7 @@
         </div>
 
         <div class="container my-4">
-        <h5 class="mb-3">Related Official Sites</h5>
-        <div class="horizontal-scroll d-flex overflow-auto gap-3 pb-2">
+        <div class="horizontal-scroll d-flex overflow-auto gap-5 pb-10">
 
             <!-- KTB -->
             <a href="https://www.ktb.gov.tr/?_Dil=2" target="_blank" class="text-center text-decoration-none">
@@ -144,6 +143,7 @@
                         class="card-img-top p-2" alt="KTB Logo" style="height: 80px; object-fit: contain;">
                     <div class="card-body p-2">
                         <p class="small fw-semibold mb-0">Ministry of Culture & Tourism</p>
+                        <p class="small fw-semibold mb-0">Kültür ve Turizm Bakanlığı</p>
                     </div>
                 </div>
             </a>
@@ -155,6 +155,7 @@
                         class="card-img-top p-2" alt="ITO Logo" style="height: 80px; object-fit: contain;">
                     <div class="card-body p-2">
                         <p class="small fw-semibold mb-0">Istanbul Chamber of Commerce</p>
+                        <p class="small fw-semibold mb-0">İstanbul Ticaret Odası</p>
                     </div>
                 </div>
             </a>
@@ -166,6 +167,7 @@
                         class="card-img-top p-2" alt="MFA Logo" style="height: 80px; object-fit: contain;">
                     <div class="card-body p-2">
                         <p class="small fw-semibold mb-0">Ministry of Foreign Affairs</p>
+                        <p class="small fw-semibold mb-0">Dışişleri Bakanlığı</p>
                     </div>
                 </div>
             </a>
@@ -178,6 +180,7 @@
                         class="card-img-top p-2" alt="CMS Law Logo" style="height: 80px; object-fit: contain;">
                     <div class="card-body p-2">
                         <p class="small fw-semibold mb-0">CMS Labour Law – Türkiye</p>
+                        <p class="small fw-semibold mb-0">CMS İş Hukuku – Türkiye</p>
                     </div>
                 </div>
             </a>
@@ -189,6 +192,7 @@
                         class="card-img-top p-2" alt="Russia Visa Logo" style="height: 80px; object-fit: contain;">
                     <div class="card-body p-2">
                         <p class="small fw-semibold mb-0">Russia E-Visa Check</p>
+                        <p class="small fw-semibold mb-0">Rusya E-Vize Sorgulama</p>
                     </div>
                 </div>
             </a>

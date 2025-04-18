@@ -99,7 +99,7 @@
     <div class="container my-5">
         <div class="shadow-sm border rounded p-4">
             <div class="highlight-bar text-white p-2 mb-3">
-                <small>Customer Work Permit Details</small>
+                <small>Çalışma İzni Bilgileri (Work Permit Details)</small>
             </div>
 
             <!-- Work Permit Status Highlight -->
@@ -114,7 +114,7 @@
             @endphp
 
             <div class="status-box d-flex align-items-center justify-content-between">
-                <span>Work Permit Status:</span>
+                <span>Çalışma İzni Durumu / Work Permit Status:</span>
                 <span class="badge {{ $badgeClass }} px-3 py-2 fs-6">
                     {{ ucfirst($customer->work_permit_status) }}
                 </span>
@@ -126,36 +126,36 @@
                 <table class="table table-bordered info-table">
                     <tbody>
                         <tr>
-                            <th>Full Name</th>
+                            <th>Adı Soyadı (Full Name)</th>
                             <td>{{ $customer->name }}</td>
                         </tr>
                         <tr>
-                            <th>Passport Number</th>
+                            <th>Pasaport Numarası  (Passport Number)</th>
                             <td>{{ $customer->passport_number }}</td>
                         </tr>
                         <tr>
-                            <th>Nationality</th>
-                            <td>{{ $customer->nationality }}</td>
-                        </tr>
-                        <tr>
-                            <th>Date of Birth</th>
-                            <td>{{ $customer->dob }}</td>
-                        </tr>
-                        <tr>
-                            <th>Visa Type</th>
-                            <td>{{ $customer->visa_type }}</td>
-                        </tr>
-                        <tr>
-                            <th>Reference No</th>
-                            <td>{{ $customer->reference_no }}</td>
-                        </tr>
-                        <tr>
-                            <th>Passport Expiry</th>
+                            <th>Pasaport Bitiş Tarihi (Passport Expiry)</th>
                             <td>{{ $customer->passport_expiry_date }}</td>
                         </tr>
                         <tr>
-                            <th>Permit Duration</th>
+                            <th>Uyruk  (Nationality)</th>
+                            <td>{{ $customer->nationality }}</td>
+                        </tr>
+                        <tr>
+                            <th>Doğum Tarihi (Date of Birth)</th>
+                            <td>{{ $customer->dob }}</td>
+                        </tr>
+                        <tr>
+                            <th>Vize Türü (Visa Type)</th>
+                            <td>{{ $customer->visa_type }}</td>
+                        </tr>
+                        <tr>
+                            <th>Çalışma İzni Süresi (ay) (Permit Duration)</th>
                             <td>{{ $customer->work_permit_duration }} months</td>
+                        </tr>
+                        <tr>
+                            <th>Referans No (Reference No)</th>
+                            <td>{{ $customer->reference_no }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -163,7 +163,7 @@
 
             <!-- Uploaded Documents Section -->
             <div class="mt-5">
-                <h5 class="section-title">Uploaded Documents</h5>
+                <h5 class="section-title">Yüklenen Belgeler / Uploaded Documents</h5>
                 <div class="row">
                     @php $hasFiles = false; @endphp
                     @for($i = 1; $i <= 9; $i++)
@@ -185,7 +185,7 @@
 
                     @if(!$hasFiles)
                         <div class="col-12">
-                            <p class="text-muted">No documents uploaded.</p>
+                            <p class="text-muted">Yüklenen belge bulunmamaktadır.</p>
                         </div>
                     @endif
                 </div>
