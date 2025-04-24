@@ -119,7 +119,7 @@ class TemplateController extends Controller
             'sam_no' => 'required|string|max:255',
             'ozel_no' => 'required|string|max:255',
             'reference_number' => 'required|string|max:255',
-            'signature' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'signature' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         // ✅ Handle signature upload

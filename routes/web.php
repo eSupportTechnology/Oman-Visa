@@ -69,6 +69,42 @@ Route::prefix('work-permits')->group(function () {
 });
 
 
+use App\Http\Controllers\InvoiceController;
+
+// Invoice Routes
+Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.index');        // Show all invoices
+Route::post('/invoices', [InvoiceController::class, 'store'])->name('invoices.store');       // Save new invoice
+Route::delete('/invoices/{id}', [InvoiceController::class, 'destroy'])->name('invoices.destroy'); // Delete invoice
+Route::get('/invoices/{id}', [InvoiceController::class, 'show'])->name('invoices.show');
+Route::get('/invoices/{id}/download-pdf', [InvoiceController::class, 'downloadPdf'])->name('invoices.downloadPdf');
+
+
+use App\Http\Controllers\Template03Controller;
+
+Route::prefix('template03')->group(function () {
+    Route::get('/', [Template03Controller::class, 'index'])->name('template03.indexx');
+    Route::get('/create', [Template03Controller::class, 'create'])->name('template03.createe');
+    Route::post('/store', [Template03Controller::class, 'store'])->name('template03.storee');
+    Route::get('/show/{id}', [Template03Controller::class, 'show'])->name('template03.showw');
+    Route::delete('/delete/{id}', [Template03Controller::class, 'destroy'])->name('template03.destroyy');
+    Route::get('template03/{id}/download-pdf', [Template03Controller::class, 'downloadPdf'])->name('template03.downloadPdf');
+
+});
+
+
+use App\Http\Controllers\Template04Controller;
+
+Route::prefix('template04')->group(function () {
+    Route::get('/', [Template04Controller::class, 'index'])->name('template04.indexx');
+    Route::get('/create', [Template04Controller::class, 'create'])->name('template04.create');
+    Route::post('/store', [Template04Controller::class, 'store'])->name('template04.generatee');
+    Route::get('/show/{id}', [Template04Controller::class, 'show'])->name('template04.show');
+    Route::delete('/delete/{id}', [Template04Controller::class, 'destroy'])->name('template04.destroy');
+    Route::get('/template04/{id}/pdf', [Template04Controller::class, 'generatePdf'])->name('template04.pdf');
+
+});
+
+
 // Template Routes
 Route::prefix('template')->group(function () {
     Route::get('/template01', [TemplateController::class, 'template01'])->name('template01.index');

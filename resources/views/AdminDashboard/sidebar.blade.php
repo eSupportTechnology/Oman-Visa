@@ -78,10 +78,10 @@
                             <span>Templates</span>
                         </a>
                         <ul class="sidebar-submenu">
-                            <li><a href="{{ route('template01.index') }}">Translation Risit</a></li>
+                            <li><a href="{{ route('invoices.index') }}">Translation Risit</a></li>
                             <li><a href="{{ route('work_permits.create') }}">Barcode </a></li>
-                            <li><a href="{{ route('template03.index') }}">Guchidara Slip</a></li>
-                            <li><a href="{{ route('template04.index') }}">Translation & notry</a></li>
+                            <li><a href="{{ route('template03.indexx') }}">Guchidara Slip</a></li>
+                            <li><a href="{{ route('template04.indexx') }}">Translation & notry</a></li>
                             <!--<li><a href="{{ route('template05.index') }}">Caddie Job Offer Letter Entry</a></li>
                             <li><a href="{{ route('template06.index') }}">Template06</a></li>
                             <li><a href="{{ route('template07.index') }}">Passport </a></li>

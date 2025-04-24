@@ -101,7 +101,7 @@
     <div class="container my-5">
         <div class="shadow-sm border rounded">
             <div class="highlight-bar text-white p-2">
-                <small>Çalışma İzni Durumu Sorgulama (Website for Work Permit Status)</small>
+                <small>Çalışma İzni Durumu Sorgulama ( Work Permit Status)</small>
             </div>
 
 
@@ -186,15 +186,15 @@
             </a>
 
             <!-- E-Visa Russia -->
-            <a href="https://evisacheck.kdmid.ru/" target="_blank" class="text-center text-decoration-none">
-                <div class="card border-0 shadow-sm" style="min-width: 180px;">
-                    <img src="logo.png"
-                        class="card-img-top p-2" alt="Russia Visa Logo" style="height: 80px; object-fit: contain;">
-                    <div class="card-body p-2">
-                        <p class="small fw-semibold mb-0">Russia E-Visa Check</p>
-                        <p class="small fw-semibold mb-0">Rusya E-Vize Sorgulama</p>
-                    </div>
+           <a href="https://gsb.gov.tr/" target="_blank" class="text-center text-decoration-none">
+            <div class="card border-0 shadow-sm" style="min-width: 180px;">
+                <img src="sport.png"
+                    class="card-img-top p-2" alt="Ministry of Youth and Sports Logo" style="height: 80px; object-fit: contain;">
+                <div class="card-body p-2">
+                    <p class="small fw-semibold mb-0">Ministry of Youth and Sports</p>
+                    <p class="small fw-semibold mb-0">Gençlik ve Spor Bakanlığı</p>
                 </div>
+            </div>
             </a>
 
         </div>

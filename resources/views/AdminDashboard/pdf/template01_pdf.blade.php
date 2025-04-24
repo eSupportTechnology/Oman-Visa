@@ -57,10 +57,11 @@
         .signature {
             margin-top: 60px;
             text-align: right;
+            margin-left: 10px;
         }
 
         .signature img {
-            width: 150px;
+            width: 180px;
         }
 
         .thanks {

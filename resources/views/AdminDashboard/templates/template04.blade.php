@@ -70,53 +70,76 @@
             </div>
         </div>
 
-        <!-- Page 2: Aadhaar / Identity Details -->
-        <div class="card mb-4">
-            <div class="card-header"><h5>Aadhaar / Identity Details (Page 2)</h5></div>
-            <div class="card-body row">
-                <div class="col-md-6">
-                    <label>Enrollment Number</label>
-                    <input type="text" name="aadhaar_enroll_no" class="form-control">
-
-                    <label>Recipient Name</label>
-                    <input type="text" name="aadhaar_recipient" class="form-control">
-
-                    <label>C/O</label>
-                    <input type="text" name="aadhaar_care_of" class="form-control">
-
-                    <label>Address</label>
-                    <textarea name="aadhaar_address" class="form-control" rows="4"></textarea>
-
-                    <label>Mobile Number</label>
-                    <input type="text" name="aadhaar_mobile" class="form-control">
-
-                    <label>Aadhaar Number</label>
-                    <input type="text" name="aadhaar_number" class="form-control">
-                </div>
-
-                <div class="col-md-6">
-                    <label>My Identity Label</label>
-                    <input type="text" name="aadhaar_identity_label" class="form-control">
-
-                    <label>Full Name</label>
-                    <input type="text" name="aadhaar_full_name" class="form-control">
-
-                    <label>Date of Birth</label>
-                    <input type="date" name="aadhaar_dob" class="form-control">
-
-                    <label>Gender</label>
-                    <select name="aadhaar_gender" class="form-control">
-                        <option value="">Select Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
-                    </select>
-
-                    <label>Signature Image Upload</label>
-                    <input type="file" name="signature2" class="form-control" accept="image/*" required>
-                </div>
-            </div>
+        <div style="font-family: Arial, sans-serif; margin: 5mm;">
+    {{-- HEADER --}}
+    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+        <img src="{{ public_path('logo5.png') }}" alt="Logo" style="height: 80px;">
+        <div style="margin-left: 10px; color:#042e61;">
+            <p style="margin: 0; font-weight: bold;">Avukat Mehmet Genç</p>
+            <p style="margin: 0;">Kartaltepe, Limon Çiçeği Sk. 19/6, 34140 Bakırköy/İstanbul, Türkiye</p>
         </div>
+    </div>
+
+    <h3 style="text-align: center; margin-top: 20px;">AADHAAR / KİMLİK DETAYLARI</h3>
+
+    <div style="line-height: 1.6; font-size: 14px; margin-top: 20px;">
+        Hindistan Benzersiz Kimlik Kurumu<br>
+        Unique Identification Authority of India<br>
+        Hindistan Hükümeti / Government of India
+    </div>
+
+    <div style="margin-top: 15px; font-size: 14px; line-height: 1.6;">
+        Kayıt Numarası / Enrollment No.: {{ $data['aadhaar_enroll_no'] }}
+    </div>
+
+    <div style="margin-top: 15px;">
+        Alıcı / To: {{ $data['aadhaar_recipient'] }}<br>
+        C/O: {{ $data['aadhaar_care_of'] }}
+    </div>
+
+    <div style="margin-top: 15px;">
+        Adres / Address:<br>
+        {!! nl2br(e($data['aadhaar_address'])) !!}
+    </div>
+
+    <div style="margin-top: 15px;">
+        Telefon Numarası / Mobile: {{ $data['aadhaar_mobile'] }}<br>
+        Aadhaar Numarası / Your Aadhaar No.: {{ $data['aadhaar_number'] }}
+    </div>
+
+    <div style="margin-top: 15px;">
+        Aadhaar - Kimliğim, Güvencem<br>
+        My Aadhaar, My Identity
+    </div>
+
+    <div style="margin-top: 15px;">
+        Hindistan Hükümeti / Government of India
+    </div>
+
+    <div style="margin-top: 15px;">
+        Ad Soyad / Name: {{ $data['aadhaar_full_name'] }}<br>
+        Doğum Tarihi / DOB: {{ \Carbon\Carbon::parse($data['aadhaar_dob'])->format('d/m/Y') }}<br>
+        Cinsiyet / Gender: {{ $data['aadhaar_gender'] }}<br>
+        Aadhaar Numarası / Aadhaar No.: {{ $data['aadhaar_number'] }}
+    </div>
+
+    @if(isset($data['signature2']))
+        <div style="text-align: right; margin-top: 40px;">
+            <img src="{{ public_path('storage/' . $data['signature2']) }}" alt="Signature 2" style="height: 60px;">
+        </div>
+    @endif
+
+    {{-- NOTARY STAMP --}}
+    <div style="text-align: right; margin-top: 40px;">
+        <img src="{{ public_path('notary_stamp.png') }}" alt="Notary Stamp" style="height: 90px;">
+        <p style="font-weight: bold; color: #042e61; margin: 0;">İstanbul 39 Noter</p>
+        <p style="margin: 0; font-size: 12px;">Tarih: {{ \Carbon\Carbon::now()->format('d F Y') }}</p>
+        <p style="margin: 0; font-size: 12px;">
+            Zeyrek, Macar Kardeşler Caddesi, Sırmacılar Sok. Köşe İşhanı 17/1, 34083 Fatih/İstanbul, Türkiye
+        </p>
+    </div>
+</div>
+
 
         <!-- Page 3: Police Verification -->
         <div class="card mb-4">
